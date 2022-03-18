@@ -37,10 +37,11 @@ body {
     display: inline-block;
     background-color: white;
     padding: 5px 20px;
-    margin: 10px;
+    margin: 10px 25px;
     border-radius: 5px;
-    width: 170px;
+    width: 180px;
     line-height: 5px;
+    text-align: left;
 }
 
 .events-display {
@@ -48,6 +49,7 @@ body {
     margin-top: 15px;
     margin-left: auto;
     height: 390px;
+    text-align: center;
 }
 
 .event-slot {

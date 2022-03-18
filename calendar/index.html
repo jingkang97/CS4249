@@ -18,7 +18,7 @@
         <div>
             <div id="color-calendar"></div>
             <div class="legend-container">
-                <div class="legend-header">Calendar Legend</div>
+                <div class="legend-header">Calendar legend</div>
                 <div class="color-row">
                     <div>
                         <div class="avail-icon"></div>
@@ -220,7 +220,7 @@
                     // this prints element in console but not sure where to pass data
                     events_display.onclick = function(e){console.log(e)};
                 } else {
-                    events_display.innerHTML = '<div class="no-events-text">There are no more available slots. <br> Days with available slots are marked in green.</div>';
+                    events_display.innerHTML = '<div class="no-events-text">There are no more available slots. <br> Please select an available date that is marked in green.</div>';
                 }
             },
         })
@@ -238,6 +238,8 @@
                 document.querySelector(".selectedSlott").innerHTML = selected_slots_html;
             }
         console.log(selectedSlots);
+
+
         // function displaySelectedSlot(element) {
             
         //     document.querySelector(".selectedSlott").innerHTML = element.innerHTML;
