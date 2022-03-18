@@ -3,9 +3,8 @@
 <head>
  <link rel="stylesheet" type="text/css" href="style.css">
     <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <title>Calendar Interface</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Calendar Schedule</title>
     <link href="https://www.cssscript.com/demo/sticky.css" rel="stylesheet" type="text/css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/color-calendar@1.0.5/dist/css/theme-glass.css" />
 </head>
@@ -18,16 +17,34 @@
     <div class="row">
         <div>
             <div id="color-calendar"></div>
+            <div class="legend-container">
+                <div class="legend-header">Calendar Legend</div>
+                <div class="color-row">
+                    <div>
+                        <div class="avail-icon"></div>
+                        Available
+                    </div>
+                    <div>
+                        <div class="unavail-icon"></div>
+                        Unavailable
+                    </div>
+                    <div>
+                        <div class="selected-icon"></div>
+                        Selected
+                    </div>
+                </div>
+            </div>
         </div>
         <div class="col">
             <h2 class="header">Available Time Slots</h2>
+            <div class="sub-header" id="selected-date"></div>
             <div class="events-display"></div>
         </div>
     </div>
     <div class="row">
         <div class="selected-slots">
             <h2>Selected Time Slots</h2>
-            <div class="selected"></div>
+            <div class="selectedSlott"></div>
         </div>
     </div>
     <div class="button-container">
@@ -35,6 +52,7 @@
     </div>
 </div>
 <script src="https://cdn.jsdelivr.net/npm/color-calendar@1.0.5/dist/bundle.min.js"></script>
+<!-- <script src="calendar/script.js"></script> -->
 <script>
     new Calendar({
         id: '#color-calendar',
@@ -43,6 +61,61 @@
         primaryColor: '#4F98DB',
         headerBackgroundColor: '#4F98DB',
         eventsData:[
+        // correct slots:
+        {
+            start: '2022-09-12T06:00:00',
+            end: '2022-09-12T20:30:00',
+            slot: '10:30 AM - 11:30 AM',
+            session: 'Session 3',
+        },
+        {
+            start: '2022-09-12T06:00:00',
+            end: '2022-09-12T20:30:00',
+            slot: '12:30 PM - 1:30 PM',
+            session: 'Session 5',
+        },
+        {
+            start: '2022-09-12T06:00:00',
+            end: '2022-09-12T20:30:00',
+            slot: '4:30 PM - 5:30 PM',
+            session: 'Session 9',
+        },
+        {
+            start: '2022-09-19T06:00:00',
+            end: '2022-09-19T20:30:00',
+            slot: '10:30 AM - 11:30 AM',
+            session: 'Session 3',
+        },
+        {
+            start: '2022-09-19T06:00:00',
+            end: '2022-09-19T20:30:00',
+            slot: '12:30 PM - 1:30 PM',
+            session: 'Session 5',
+        },
+        {
+            start: '2022-09-19T06:00:00',
+            end: '2022-09-19T20:30:00',
+            slot: '4:30 PM - 5:30 PM',
+            session: 'Session 9',
+        },
+        {
+            start: '2022-09-26T06:00:00',
+            end: '2022-09-26T20:30:00',
+            slot: '10:30 AM - 11:30 AM',
+            session: 'Session 3',
+        },
+        {
+            start: '2022-09-26T06:00:00',
+            end: '2022-09-26T20:30:00',
+            slot: '12:30 PM - 1:30 PM',
+            session: 'Session 5',
+        },
+        {
+            start: '2022-09-26T06:00:00',
+            end: '2022-09-26T20:30:00',
+            slot: '4:30 PM - 5:30 PM',
+            session: 'Session 9',
+        },
         // incorrect slots:
         {
             start: '2022-04-12T06:00:00',
@@ -128,69 +201,15 @@
             slot: '7:30 PM - 8:30 PM',
             session: 'Session 12',
         },
-        // correct slots:
-        {
-            start: '2022-09-12T06:00:00',
-            end: '2022-09-12T20:30:00',
-            slot: '10:30 AM - 11:30 AM',
-            session: 'Session 3',
-        },
-        {
-            start: '2022-09-12T06:00:00',
-            end: '2022-09-12T20:30:00',
-            slot: '12:30 PM - 1:30 PM',
-            session: 'Session 5',
-        },
-        {
-            start: '2022-09-12T06:00:00',
-            end: '2022-09-12T20:30:00',
-            slot: '4:30 PM - 5:30 PM',
-            session: 'Session 9',
-        },
-        {
-            start: '2022-09-19T06:00:00',
-            end: '2022-09-19T20:30:00',
-            slot: '10:30 AM - 11:30 AM',
-            session: 'Session 3',
-        },
-        {
-            start: '2022-09-19T06:00:00',
-            end: '2022-09-19T20:30:00',
-            slot: '12:30 PM - 1:30 PM',
-            session: 'Session 5',
-        },
-        {
-            start: '2022-09-19T06:00:00',
-            end: '2022-09-19T20:30:00',
-            slot: '4:30 PM - 5:30 PM',
-            session: 'Session 9',
-        },
-        {
-            start: '2022-09-26T06:00:00',
-            end: '2022-09-26T20:30:00',
-            slot: '10:30 AM - 11:30 AM',
-            session: 'Session 3',
-        },
-        {
-            start: '2022-09-26T06:00:00',
-            end: '2022-09-26T20:30:00',
-            slot: '12:30 PM - 1:30 PM',
-            session: 'Session 5',
-        },
-        {
-            start: '2022-09-26T06:00:00',
-            end: '2022-09-26T20:30:00',
-            slot: '4:30 PM - 5:30 PM',
-            session: 'Session 9',
-        },
         ],
         dateChanged: (currentDate, events) => {
                 const events_display = document.querySelector('.events-display');
                 let events_html = '';
                 console.log(currentDate, events);
+                document.getElementById('selected-date').innerHTML = currentDate.toDateString();
                 events.forEach(event => {
                 events_html += `
-                    <div class="avail-timeslot">
+                    <div id="available-timeslot" onclick="displaySelectedSlot(this)" class="avail-timeslot">
                         <p class="event-slot">${event.slot}</p>
                         <p>${event.session}<p>
                     </div>
@@ -201,10 +220,30 @@
                     // this prints element in console but not sure where to pass data
                     events_display.onclick = function(e){console.log(e)};
                 } else {
-                    events_display.innerHTML = '<div class="no-events-text">There are no more available slots. <br> Days with available slots are marked in blue.</div>';
+                    events_display.innerHTML = '<div class="no-events-text">There are no more available slots. <br> Days with available slots are marked in green.</div>';
                 }
             },
         })
+
+        let selectedSlots = [];
+        let selected_slots_html = '';
+        
+        function displaySelectedSlot(element) {
+            // if (!selectedSlots.includes(element.innerHTML)) {
+                //     selectedSlots.append(element.innerHTML);
+                // }
+                // document.querySelector(".selectedSlott").innerHTML = selectedSlots;
+                console.log(element);
+                selected_slots_html += element.innerHTML;
+                document.querySelector(".selectedSlott").innerHTML = selected_slots_html;
+            }
+        console.log(selectedSlots);
+        // function displaySelectedSlot(element) {
+            
+        //     document.querySelector(".selectedSlott").innerHTML = element.innerHTML;
+        //     // var demo = document.getElementById("selected");
+        //     // demo.style.color = "green";
+        // }
 </script>
 </body>
 </html>
