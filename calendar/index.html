@@ -14,12 +14,12 @@
 <body>
   <div class="container">
     <h1>Driving Simulator Booking</h1>
-    <div class="float-container">
-        <div class="float-child">
+    <div class="row">
+        <div>
             <div id="color-calendar"></div>
         </div>
-        <div class="float-child">
-            <h2>Available Time Slots</h2>
+        <div class="col">
+            <h2 class="header">Available Time Slots</h2>
             <div class="events-display"></div>
         </div>
   </div>
@@ -111,17 +111,15 @@
                 events.forEach(event => {
                 events_html += `
                     <div class="avail-timeslot">
-                    <div class="avail-timeslot">
-                        <div class="event-title">${event.slot}</div>
+                        <p class="event-slot">${event.slot}</p>
                         <p>${event.session}<p>
-                    </div>
                     </div>
                 `
                 });
                 if(events_html) {
-                events_display.innerHTML = events_html;
+                    events_display.innerHTML = events_html;
                 } else {
-                events_display.innerHTML = '<div class="no-events-text">There are no more available slots. Days with available slots are marked in blue.</div>';
+                    events_display.innerHTML = '<div class="no-events-text">There are no more available slots. <br> Days with available slots are marked in blue.</div>';
                 }
             },
         })
