@@ -1,0 +1,75 @@
+<!doctype html>
+<html>
+<head>
+ <link rel="stylesheet" type="text/css" href="style.css">
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Calendar Interface</title>
+    <link href="https://www.cssscript.com/demo/sticky.css" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/color-calendar@1.0.5/dist/css/theme-basic.css" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/color-calendar@1.0.5/dist/css/theme-glass.css" />
+</head>
+
+<body>
+  <div class="container">
+    <h1>Driving Simulator Booking</h1>
+    <div class="float-container">
+        <div class="float-child">
+            <div id="color-calendar"></div>
+        </div>
+        <div class="float-child">
+            <h2>Available Time Slots</h2>
+            <div class="events-display"></div>
+        </div>
+  </div>
+<script src="https://cdn.jsdelivr.net/npm/color-calendar@1.0.5/dist/bundle.min.js"></script>
+<script>
+    new Calendar({
+        id: '#color-calendar',
+        calendarSize: 'large',
+        theme: 'glass',
+        primaryColor: '#4F98DB',
+        headerBackgroundColor: '#4F98DB',
+        eventsData:[
+        {
+            start: '2022-04-15T06:00:00',
+            end: '2022-04-15T20:30:00',
+            name: 'Event 1',
+            url: 'https://www.cssscript.com',
+        },{
+            start: '2022-04-16T06:00:00',
+            end: '2022-04-16T20:30:00',
+            name: 'Event 2',
+            url: 'https://www.cssscript.com',
+        },{
+            start: '2022-04-16T06:00:00',
+            end: '2022-04-17T20:30:00',
+            name: 'Event 3',
+            url: 'https://www.cssscript.com',
+        }
+        ],
+        dateChanged: (currentDate, events) => {
+                const events_display = document.querySelector('.events-display');
+                let events_html = '';
+                console.log(currentDate, events);
+                events.forEach(event => {
+                events_html += `
+                    <div class="avail-timeslot">
+                    <div class="avail-timeslot">
+                        <div class="event-title">${event.name}</div>
+                        <a href="${event.url}" target="_blank" class="event-url">${event.url}</a>
+                    </div>
+                    </div>
+                `
+                });
+                if(events_html) {
+                events_display.innerHTML = events_html;
+                } else {
+                events_display.innerHTML = '<div class="no-events-text">Please select available. Days with available slots are marked in blue.</div>';
+                }
+            },
+        })
+</script>
+</body>
+</html>
