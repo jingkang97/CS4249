@@ -1,0 +1,38 @@
+html{
+	font-family: Arial, sans-serif;
+}
+div{
+	margin-bottom: 5px;
+}
+input{
+	margin-left: 20px;
+}
+button{
+	margin-top: 20px;
+	margin-left: 20px;
+	background: #0766CF;
+	color: white;
+	border: black solid 1px;
+	font-weight: bold;
+}
+button:hover{
+	background: #11DCFF;
+}
+
+#months{
+	margin-bottom: 50px;
+}
+#sessionrows, #monthrows{
+	display: flex;
+}
+.monthcolumn {
+	display: flex;
+	flex-direction: column;
+	margin-right: 50px;
+}
+
+
+
+
+
+
