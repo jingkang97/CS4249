@@ -7,13 +7,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <title>Calendar Interface</title>
     <link href="https://www.cssscript.com/demo/sticky.css" rel="stylesheet" type="text/css">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/color-calendar@1.0.5/dist/css/theme-basic.css" />
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/color-calendar@1.0.5/dist/css/theme-glass.css" />
 </head>
 
 <body>
   <div class="container">
-    <h1>Driving Simulator Booking</h1>
+    <div class="title"> 
+        <h1>Driving Simulator Booking</h1>
+    </div>
     <div class="row">
         <div>
             <div id="color-calendar"></div>
@@ -22,7 +23,17 @@
             <h2 class="header">Available Time Slots</h2>
             <div class="events-display"></div>
         </div>
-  </div>
+    </div>
+    <div class="row">
+        <div class="selected-slots">
+            <h2>Selected Time Slots</h2>
+            <div class="selected"></div>
+        </div>
+    </div>
+    <div class="button-container">
+        <button class="submit-button">Submit</button>
+    </div>
+</div>
 <script src="https://cdn.jsdelivr.net/npm/color-calendar@1.0.5/dist/bundle.min.js"></script>
 <script>
     new Calendar({
@@ -32,77 +43,146 @@
         primaryColor: '#4F98DB',
         headerBackgroundColor: '#4F98DB',
         eventsData:[
+        // incorrect slots:
         {
-            start: '2022-04-11T06:00:00',
-            end: '2022-04-11T20:30:00',
-            slot: '8:00 AM - 9:00 AM',
+            start: '2022-04-12T06:00:00',
+            end: '2022-04-12T20:30:00',
+            slot: '8:30 AM - 9:30 AM',
             session: 'Session 1',
-        },{
-            start: '2022-04-11T06:00:00',
-            end: '2022-04-11T20:30:00',
-            slot: '12:00 PM - 1:00 PM',
-            session: 'Session 4',
-        },{
+        },
+        {
+            start: '2022-04-12T06:00:00',
+            end: '2022-04-12T20:30:00',
+            slot: '12:30 PM - 1:30 PM',
+            session: 'Session 5',
+        },
+        {
             start: '2022-04-13T06:00:00',
             end: '2022-04-13T20:30:00',
-            slot: '3:00 PM - 4:00 PM',
-            session: 'Session 7',
-        },{
-            start: '2022-04-13T06:00:00',
-            end: '2022-04-13T20:30:00',
-            slot: '4:00 PM - 5:00 PM',
+            slot: '3:30 PM - 4:30 PM',
             session: 'Session 8',
-        },{
+        },
+        {
             start: '2022-04-13T06:00:00',
             end: '2022-04-13T20:30:00',
-            slot: '5:00 PM - 6:00 PM',
+            slot: '4:30 PM - 5:30 PM',
             session: 'Session 9',
-        },{
+        },
+        {
             start: '2022-04-13T06:00:00',
             end: '2022-04-13T20:30:00',
-            slot: '6:00 PM - 7:00 PM',
+            slot: '5:30 PM - 6:30 PM',
             session: 'Session 10',
-        },{
+        },
+        {
+            start: '2022-04-13T06:00:00',
+            end: '2022-04-13T20:30:00',
+            slot: '6:30 PM - 7:30 PM',
+            session: 'Session 11',
+        },
+        {
             start: '2022-04-15T06:00:00',
             end: '2022-04-15T20:30:00',
-            slot: '8:00 AM - 9:00 AM',
+            slot: '8:30 AM - 9:30 AM',
             session: 'Session 1',
-        },{
+        },
+        {
             start: '2022-04-16T06:00:00',
             end: '2022-04-16T20:30:00',
-            slot: '8:00 AM - 9:00 AM',
+            slot: '8:30 AM - 9:30 AM',
             session: 'Session 1',
-        },{
+        },
+        {
             start: '2022-04-16T06:00:00',
             end: '2022-04-16T20:30:00',
-            slot: '9:00 AM - 10:00 AM',
+            slot: '9:30 AM - 10:30 AM',
             session: 'Session 2',
-        },{
+        },
+        {
             start: '2022-04-16T06:00:00',
             end: '2022-04-16T20:30:00',
-            slot: '11:00 AM - 12:00 PM',
-            session: 'Session 3',
-        },{
-            start: '2022-04-16T06:00:00',
-            end: '2022-04-16T20:30:00',
-            slot: '12:00 PM - 1:00 PM',
+            slot: '11:30 AM - 12:30 PM',
             session: 'Session 4',
-        },{
+        },
+        {
             start: '2022-04-16T06:00:00',
             end: '2022-04-16T20:30:00',
-            slot: '1:00 PM - 2:00 PM',
+            slot: '12:30 PM - 1:30 PM',
             session: 'Session 5',
-        },{
+        },
+        {
             start: '2022-04-16T06:00:00',
             end: '2022-04-16T20:30:00',
-            slot: '2:00 PM - 3:00 PM',
+            slot: '1:30 PM - 2:30 PM',
             session: 'Session 6',
-        },{
+        },
+        {
             start: '2022-04-16T06:00:00',
             end: '2022-04-16T20:30:00',
-            slot: '7:00 PM - 8:00 PM',
-            session: 'Session 11',
-        }
+            slot: '2:30 PM - 3:30 PM',
+            session: 'Session 7',
+        },
+        {
+            start: '2022-04-16T06:00:00',
+            end: '2022-04-16T20:30:00',
+            slot: '7:30 PM - 8:30 PM',
+            session: 'Session 12',
+        },
+        // correct slots:
+        {
+            start: '2022-09-12T06:00:00',
+            end: '2022-09-12T20:30:00',
+            slot: '10:30 AM - 11:30 AM',
+            session: 'Session 3',
+        },
+        {
+            start: '2022-09-12T06:00:00',
+            end: '2022-09-12T20:30:00',
+            slot: '12:30 PM - 1:30 PM',
+            session: 'Session 5',
+        },
+        {
+            start: '2022-09-12T06:00:00',
+            end: '2022-09-12T20:30:00',
+            slot: '4:30 PM - 5:30 PM',
+            session: 'Session 9',
+        },
+        {
+            start: '2022-09-19T06:00:00',
+            end: '2022-09-19T20:30:00',
+            slot: '10:30 AM - 11:30 AM',
+            session: 'Session 3',
+        },
+        {
+            start: '2022-09-19T06:00:00',
+            end: '2022-09-19T20:30:00',
+            slot: '12:30 PM - 1:30 PM',
+            session: 'Session 5',
+        },
+        {
+            start: '2022-09-19T06:00:00',
+            end: '2022-09-19T20:30:00',
+            slot: '4:30 PM - 5:30 PM',
+            session: 'Session 9',
+        },
+        {
+            start: '2022-09-26T06:00:00',
+            end: '2022-09-26T20:30:00',
+            slot: '10:30 AM - 11:30 AM',
+            session: 'Session 3',
+        },
+        {
+            start: '2022-09-26T06:00:00',
+            end: '2022-09-26T20:30:00',
+            slot: '12:30 PM - 1:30 PM',
+            session: 'Session 5',
+        },
+        {
+            start: '2022-09-26T06:00:00',
+            end: '2022-09-26T20:30:00',
+            slot: '4:30 PM - 5:30 PM',
+            session: 'Session 9',
+        },
         ],
         dateChanged: (currentDate, events) => {
                 const events_display = document.querySelector('.events-display');
@@ -118,6 +198,8 @@
                 });
                 if(events_html) {
                     events_display.innerHTML = events_html;
+                    // this prints element in console but not sure where to pass data
+                    events_display.onclick = function(e){console.log(e)};
                 } else {
                     events_display.innerHTML = '<div class="no-events-text">There are no more available slots. <br> Days with available slots are marked in blue.</div>';
                 }
