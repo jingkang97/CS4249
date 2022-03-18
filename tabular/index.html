@@ -8,7 +8,7 @@
 </head>
 <body>
 	<div id="months">
-		<h3 >Month:</h3>
+		<div class="header">Months: </div>
 		<div id="monthrows">
 			<div class="monthcolumn">
 				<div><input type="checkbox" id="Mar22"><label>Mar/2022</label></div>
@@ -34,38 +34,43 @@
 			
 	</div>
 	<div id="session">
-		<h3>Session:</h3>
+		<div class="header">Session:</div>
 		<div id="sessionrows">
-			<div><input type="checkbox" id="1"><label>1</label></div>
-			<div><input type="checkbox" id="2"><label>2</label></div>
-			<div><input type="checkbox" id="3"><label>3</label></div>
-			<div><input type="checkbox" id="4"><label>4</label></div>
-			<div><input type="checkbox" id="5"><label>5</label></div>
-			<div><input type="checkbox" id="6"><label>6</label></div>
-			<div><input type="checkbox" id="7"><label>7</label></div>
-			<div><input type="checkbox" id="8"><label>8</label></div>
-		</div>
-		<div>
-			<input type="checkbox" id="allsessions"><label>All Sessions</label>
+			<div id="normalsession">
+				<div><input type="checkbox" id="1"><label>1</label></div>
+				<div><input type="checkbox" id="2"><label>2</label></div>
+				<div><input type="checkbox" id="3"><label>3</label></div>
+				<div><input type="checkbox" id="4"><label>4</label></div>
+				<div><input type="checkbox" id="5"><label>5</label></div>
+				<div><input type="checkbox" id="6"><label>6</label></div>
+				<div><input type="checkbox" id="7"><label>7</label></div>
+				<div><input type="checkbox" id="8"><label>8</label></div>
+			</div>
+			<div>
+				<input type="checkbox" id="allsessions"><label>All Sessions</label>
+			</div>
 		</div>
 	</div>
-	<div id="session">
-		<h3>Day:</h3>
-		<div>
-			<input type="checkbox" id="mon"><label>Mon</label>
-			<input type="checkbox" id="tue"><label>Tue</label>
-			<input type="checkbox" id="wed"><label>Wed</label>
-			<input type="checkbox" id="thu"><label>Thu</label>
-			<input type="checkbox" id="fri"><label>Fri</label>
-			<input type="checkbox" id="sat"><label>Sat</label>
-			<input type="checkbox" id="sun"><label>Sun</label>
+	<div id="days">
+		<div class="header">Day:</div>
+		<div id="daysrows">
+			<div id="normaldays">
+				<input type="checkbox" id="mon"><label>Mon</label>
+				<input type="checkbox" id="tue"><label>Tue</label>
+				<input type="checkbox" id="wed"><label>Wed</label>
+				<input type="checkbox" id="thu"><label>Thu</label>
+				<input type="checkbox" id="fri"><label>Fri</label>
+				<input type="checkbox" id="sat"><label>Sat</label>
+				<input type="checkbox" id="sun"><label>Sun</label>
+			</div>
+			<div>
+				<input type="checkbox" id="alldays"><label>All Days</label>
+			</div>
 		</div>
-		<div>
-			<input type="checkbox" id="alldays"><label>All Sessions</label>
-		</div>
+		
 	</div>
 	<div id="venue">
-		<h3>Your Venue:</h3> <input type="radio" id="venue"><label>BBDC</label>
+		<div class="header">Your Venue:</div> <input type="radio" id="venue"><label>BBDC</label>
 	</div>
 	<button>Search</button>
 </body>

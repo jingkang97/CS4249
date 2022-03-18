@@ -18,12 +18,17 @@ button{
 button:hover{
 	background: #11DCFF;
 }
-
-#months{
-	margin-bottom: 50px;
+.header{
+	font-weight: bold;
+	min-width: 100px;
 }
-#sessionrows, #monthrows{
+#normalsession, #monthrows, #normaldays, #venue{
 	display: flex;
+}
+#months, #session, #days{
+	display: flex;
+	flex-direction: row;
+	margin-bottom: 50px;
 }
 .monthcolumn {
 	display: flex;
