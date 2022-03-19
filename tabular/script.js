@@ -1,10 +1,3 @@
-// const mar = document.getElementById('Mar22')
-// console.log(mar)
-// mar.addEventListener('click', update)
-// function update(e) {
-//     console.log(e)
-// }
-
 const month_ids = {'Mar22': false, 'Jul22': false, 'Nov22': false, 'Apr22': false, 'Aug22': false, 'Dec22': false, 'May22': false, 'Sep22': false, 'Jan23': false, 'Jun22': false, 'Oct22': false, 'Feb22': false}
 // console.log(month_ids)
 // Object.keys(month_ids).map(function(key, index) {

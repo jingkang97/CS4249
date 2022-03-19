@@ -8,15 +8,16 @@
     <title>Revision</title>
 </head>
 <body>
-    <h3>Booking For 3A Autocar Practical Training (Revision)</h3>
+    <h3 style="color: #001251; text-decoration: underline; line-height: 0;">Booking For 3A Driving Simulator Practical Training</h3>
+    <p style="color: #010F40; line-height: 0;">Please check the slot you want to book.</p>
     <div id="selected_info">
-        <div class="info_label">Month: </div> <span id="selected_month">aasd</span>
+        <div class="info_label">Month: </div> <span id="selected_month"></span>
     </div>
     <div id="selected_info">
-        <div class="info_label">Session: </div> <span id="selected_session">aasd</span>
+        <div class="info_label">Session: </div> <span id="selected_session"></span>
     </div>
     <div id="selected_info">
-        <div class="info_label">Day: </div> <span id="selected_day">aasd</span>
+        <div class="info_label">Day: </div> <span id="selected_day"></span>
     </div>
     <!-- <div id="selected_info">
         <div class="info_label">Group: </div> <span>G8035</span>
@@ -29,33 +30,26 @@
         <div class="slot_listing_header"><li><span>Slots Listing</span></li></div>
         <p style="color: #0051b4; font-size: 14px;">Below are the only slots that are available based on your schedule seleciton. Please tick to select the date and then click "<b>Submit</b>". Click "<b><< Back</b>" to select other schedule. Click "<b>View Booking</b>" to view valid unattended booking based on the schedule you selected.</p>
 
-        <table>
-            <tr>
-                <th>Date</th>
-                <th>Venue</th>
-                <th>Session 1</th>
-                <th>Session 2</th>
-                <th>Session 3</th>
-                <th>Session 4</th>
-                <th>Session 5</th>
-                <th>Session 6</th>
-                <th>Session 7</th>
-                <th>Session 8</th>
-                <th>Session 9</th>
-                <th>Session 10</th>
-                <th>Session 11</th>
-                <th>Session 12</th>
-                <th>Session 13</th>
-                <th>Session 14</th>
-                <th>Session 15</th>
-                <th>Session 16</th>
-            </tr>
-        </table>
+        <table id="slots"></table>
 
     </div>
 
     <button><a href="index.html">&lt;&lt; Back</a></button>
     <button><a href="confirmation.html">Submit</a></button>
+
+    <!-- <span>
+    <div class="session_description">
+        <div id="session_info">
+            <div class="info_label">Date: </div> <span>02/03/2022 (Wed)</span>
+        </div>
+        <div id="session_info">
+            <div class="info_label">Session: </div> <span>7 (13:30-14:10)</span>
+        </div>
+        <div id="session_info">
+            <div class="info_label">Venue: </div> <span>BBDC</span>
+        </div>
+    </div>
+    </span> -->
 
     <script src="revision_script.js"></script>
 </body>

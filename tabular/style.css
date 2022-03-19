@@ -25,7 +25,7 @@ button:hover{
 	font-weight: bold;
 	min-width: 90px;
 }
-#normalsession, #monthrows, #normaldays, #venue, #selected_info{
+#normalsession, #monthrows, #normaldays, #venue, #selected_info {
 	display: flex;
 }
 #months, #session, #days{
@@ -92,6 +92,8 @@ th {
 
 td {
 	width: 10%;
+	text-align: center;
+	font-weight: bold;
 }
   
 table {
@@ -100,8 +102,42 @@ table {
 	border-color: #515151;
 }
 
+#session_info {
+	display: flex;
+	margin-top: 2.5px;
+	margin-bottom: -2.5px;
+	color: #00104E;
+}
 
+.session_description {
+	width: 300px;
+  	border: 10px solid #C7E2F3;
+	outline: 1px solid #004E87;
+	padding-left: 10px;
+	padding-right: 10px;
+	font-size: 12px;
+	background-color: white;
+}
 
+.session_cell {
+	position: relative;
+}
 
+.session_cell:hover {
+	background-color: #c5dff0;
+}
 
-
+.session_cell .hover_description {
+	visibility: hidden;
+	position: absolute;
+	bottom: 125%;
+	left: 50%;
+	margin-left: -60px;
+	opacity: 0;
+	/* transition: opacity 0.3s; */
+}
+  
+.session_cell:hover .hover_description {
+	visibility: visible;
+	opacity: 1;  
+}
