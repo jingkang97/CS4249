@@ -50,6 +50,8 @@
     <div class="button-container">
         <button class="submit-button">Submit</button>
     </div>
+
+    <div id="demo"></div>
 </div>
 <script src="https://cdn.jsdelivr.net/npm/color-calendar@1.0.5/dist/bundle.min.js"></script>
 <!-- <script src="calendar/script.js"></script> -->
@@ -229,24 +231,39 @@
             document.querySelector(".selectedSlott").innerHTML = `<p>Please select a timeslot above.</p>`
         }
 
-        let selectedSlots = [];
+        let selectedDatesArr = [];
+        
         let selected_slots_html = '';
+
+        let selectedDatesObj = {'hello' : 'ni hao'};
         
         function displaySelectedSlot(element) {
-            // if (!selectedSlots.includes(element.innerHTML)) {
-                //     selectedSlots.append(element.innerHTML);
-                // }
-                // document.querySelector(".selectedSlott").innerHTML = selectedSlots;
+
                 console.log(element);
-                const currDate = document.getElementById('selected-date');
+
+                const currDate = document.getElementById('selected-date').innerHTML;
                 selected_slots_html += `<div class="selected-timeslot">`;
-                selected_slots_html += `<b>` + currDate.innerHTML + `</b>`;
+                selected_slots_html += `<b>` + currDate + `</b>`;
                 selected_slots_html += element.innerHTML;
                 selected_slots_html += '</div>'
                 document.querySelector(".selectedSlott").innerHTML = selected_slots_html;
-            }
-        console.log(selectedSlots);
 
+                selectedDatesArr.push(currDate);
+                document.getElementById('demo').innerHTML = selectedDatesArr.toString();
+            }
+
+        // document.getElementById("demo").innerHTML = selectedDatesArr;
+        // console.log(selectedDatesArr);
+        //     ul = document.createElement('ul');
+
+        //         document.getElementById('demo').appendChild(ul);
+
+        //         selectedDatesArr.forEach(function (date) {
+        //             let li = document.createElement('li');
+        //             ul.appendChild(li);
+
+        //             li.innerHTML += date;
+        //         });
 
         // function displaySelectedSlot(element) {
             
