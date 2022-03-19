@@ -4,11 +4,9 @@
  <link rel="stylesheet" type="text/css" href="style.css">
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Calendar Schedule</title>
-    <link href="https://www.cssscript.com/demo/sticky.css" rel="stylesheet" type="text/css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/color-calendar@1.0.5/dist/css/theme-glass.css" />
+    <title>Calendar Schedule</title>
 </head>
-
 <body>
   <div class="container">
     <div class="title"> 
@@ -44,10 +42,10 @@
     <div class="row">
         <div class="selected-slots">
             <h2>Selected Time Slots</h2>
-            <div class="selectedSlott"></div>
+            <div class="selectedSlots"></div>
         </div>
     </div>
-    <div class="button-container">
+    <div class="button-container" onClick="clickSubmitHandler()">
         <button class="submit-button">Submit</button>
     </div>
 
@@ -55,7 +53,6 @@
     <div id="demoo"></div>
 </div>
 <script src="https://cdn.jsdelivr.net/npm/color-calendar@1.0.5/dist/bundle.min.js"></script>
-<!-- <script src="calendar/script.js"></script> -->
 <script>
     new Calendar({
         id: '#color-calendar',
@@ -207,17 +204,24 @@
         ],
         dateChanged: (currentDate, events) => {
                 const events_display = document.querySelector('.events-display');
+                const date = currentDate.toDateString();
+
                 let events_html = '';
-                console.log(currentDate, events);
-                document.getElementById('selected-date').innerHTML = currentDate.toDateString();
+
+                document.getElementById('selected-date').innerHTML = date;
                 events.forEach(event => {
-                events_html += `
-                    <div id="available-timeslot" onclick="displaySelectedSlot(this)" class="avail-timeslot">
-                        <p class="event-slot">${event.slot}</p>
-                        <p>${event.session}<p>
-                    </div>
-                `
+                    const sessionNum = event.session.substring("Session ".length);
+                    const key = date + sessionNum;
+        
+                    selectedStatus = key in selectedSessions ? "selected" : "unselected";
+                    events_html += `
+                        <div id="available-timeslot" onclick="clickAvailTimeSlotHandler(this)" class="avail-timeslot ${selectedStatus}">
+                            <p class="event-slot">${event.slot}</p>
+                            <p>${event.session}<p>
+                        </div>
+                    `
                 });
+
                 if(events_html) {
                     events_display.innerHTML = events_html;
                 } else {
@@ -226,50 +230,50 @@
             },
         })
 
-        if (document.querySelector(".selectedSlott").innerHTML.length == 0) {
-            document.querySelector(".selectedSlott").innerHTML = `<p>Please select a timeslot above.</p>`
+        if (document.querySelector(".selectedSlots").innerHTML.length == 0) {
+            document.querySelector(".selectedSlots").innerHTML = `<p>Please select a timeslot above.</p>`
         }
 
-        let selectedDatesArr = [];
-        let selected_slots_html = '';
-        var dict = {};
+        let selectedSessions = {};
 
-        function hasKeySetTo(obj, key, value) {
-            return obj.hasOwnProperty(key) && obj[key].includes(value);
-        }
-
-        function displaySelectedSlot(element) {
-
-            console.log(element);
-
+        function clickAvailTimeSlotHandler(element) {
             const currDate = document.getElementById('selected-date').innerHTML;
-
-            // get selected session no.
             const sessionNo = element.innerHTML.split("Session")[1].trim().charAt(0);
 
             // add selected timeslot html only if timeslot not found in dict
-            if (!hasKeySetTo(dict, currDate, sessionNo)) {
-                selected_slots_html += `<div class="selected-timeslot">`;
-                selected_slots_html += `<b>` + currDate + `</b>`;
-                selected_slots_html += element.innerHTML;
-                selected_slots_html += '</div>'
-                document.querySelector(".selectedSlott").innerHTML = selected_slots_html;
-            }
+            const key = currDate + sessionNo;
+            if (!(key in selectedSessions)) {
+                // add selected timeslot
+                element.className = "avail-timeslot selected";
+                selectedSessions[key] = {
+                    date: currDate,
+                    session: sessionNo,
+                    innerHTML: element.innerHTML
+                };
 
-            // true if "key" in dict
-            if (currDate in dict) {
-                // if value does not exists
-                if (!dict[currDate].includes(sessionNo)) {
-                    //add value to dict
-                    dict[currDate].push(sessionNo);
-                }
             } else {
-                // add key-value to dict with value initialized as array
-                dict[currDate] = [sessionNo];
+                // remove selected timeslot
+                element.className = "avail-timeslot unselected";
+                delete selectedSessions[key];
             }
 
-            // display dict items
-            document.getElementById('demoo').innerHTML = JSON.stringify(dict);
+            // render all selected slots in dict
+            let allSelectedSlotsHtml = '';
+            for (const value of Object.values(selectedSessions)) {
+                allSelectedSlotsHtml += `
+                    <div class="selected-timeslot">
+                        <b>${value.date}</b>
+                        ${value.innerHTML}
+                    </div>
+                `
+            }
+
+            // display html
+            document.querySelector(".selectedSlots").innerHTML = allSelectedSlotsHtml;
+        }
+
+        function clickSubmitHandler() {
+            console.log("submit clicked with selectedSessions: ", selectedSessions);
         }
 
 </script>

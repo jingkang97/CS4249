@@ -56,6 +56,18 @@ body {
     text-align: left;
     color: #2869A5;
 }
+
+.avail-timeslot.selected {
+    color: white;
+    background-color: #2869A5;
+}
+
+.events-display .avail-timeslot.selected:hover {
+    color: white;
+    background-color: #0a3358;
+    cursor: pointer;
+}
+
 .events-display {
     overflow-y: scroll;
     margin-top: 15px;
@@ -97,6 +109,7 @@ body {
     padding: 0 30px 20px 30px;
     width: 90%;
     border-radius: 10px;
+    min-height: 200px;
 }
 
 .lead { 
