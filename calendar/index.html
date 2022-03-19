@@ -26,7 +26,7 @@
                     </div>
                     <div>
                         <div class="unavail-icon"></div>
-                        Unavailable
+                        Not available
                     </div>
                     <div>
                         <div class="selected-icon"></div>
@@ -234,7 +234,11 @@
                 // }
                 // document.querySelector(".selectedSlott").innerHTML = selectedSlots;
                 console.log(element);
+                const currDate = document.getElementById('selected-date');
+                selected_slots_html += `<div class="selected-timeslot">`;
+                selected_slots_html += `<b>` + currDate.innerHTML + `</b>`;
                 selected_slots_html += element.innerHTML;
+                selected_slots_html += '</div>'
                 document.querySelector(".selectedSlott").innerHTML = selected_slots_html;
             }
         console.log(selectedSlots);

@@ -44,6 +44,18 @@ body {
     text-align: left;
 }
 
+.selected-timeslot {
+    display: inline-block;
+    flex-direction: row;
+    background-color: white;
+    padding: 20px 20px 8px 20px;
+    margin: 10px;
+    border-radius: 5px;
+    width: 185px;
+    line-height: 7px;
+    text-align: left;
+    color: #2869A5;
+}
 .events-display {
     overflow-y: scroll;
     margin-top: 15px;
@@ -83,7 +95,7 @@ body {
     color: white;
     margin: 30px 0;
     padding: 0 30px;
-    width: 100%;
+    width: 90%;
     border-radius: 10px;
 }
 
