@@ -18,10 +18,10 @@ const selected_sessions = JSON.parse(sessionStorage.getItem('session'))
 const selected_sessions_string = () => {
     var string = ''
     if (selected_sessions['allsessions']) {
-        string = '1, 2, 3, 4, 5, 6, 7, 8'
+        string = '1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16'
         return string
     }
-    for (var i = 1; i <= 8; i++) {
+    for (var i = 1; i <= 16; i++) {
         if (selected_sessions[i.toString()]) {
             string += i.toString() + ', '
         }

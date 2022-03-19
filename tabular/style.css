@@ -39,6 +39,12 @@ button:hover{
 	margin-right: 50px;
 }
 
+.main {
+	/* not working sia idk why */
+	padding: 300px;
+	background-color: thistle;
+}
+
 a {
 	color: white;
 	text-decoration: none;
