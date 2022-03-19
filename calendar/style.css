@@ -136,6 +136,7 @@ body {
 /* Submit Button */
 
 .submit-button {
+    margin: 20px;
     padding: 10px 30px;
     flex: right;
     font: Arial;
@@ -237,3 +238,21 @@ body {
 
 /****************** Confirmation html elements *****************/
 
+.confirm-box {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border: 2px solid lightgray;
+    border-radius: 10px;
+    padding: 20px 20px 40px 20px;
+}
+
+#message {
+    font-size: 20px;
+}
+
+#confirmed-slots {
+    font-size: 18px;
+    font-weight: bold;
+}

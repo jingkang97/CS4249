@@ -42,11 +42,9 @@
         </div>
     </div>
     <div class="button-container" onClick="clickSubmitHandler()">
-        <a href="confirmation.html"><button class="submit-button">Submit</button></a>
+        <button class="submit-button">Submit</button>
     </div>
 
-    <div id="demo"></div>
-    <div id="demoo"></div>
 </div>
 <script src="https://cdn.jsdelivr.net/npm/color-calendar@1.0.5/dist/bundle.min.js"></script>
 <script>
@@ -269,10 +267,16 @@
 
         function clickSubmitHandler() {
             console.log("submit clicked with selectedSessions: ", selectedSessions);
-            document.getElementById('demoo').innerHTML = JSON.stringify(selectedSessions);
 
-            // add to sessionstorage as string
-            sessionStorage.setItem('selectedSessions', JSON.stringify(selectedSessions));
+            // show popup alert if user submits without selecting any slots
+            if (Object.values(selectedSessions).length == 0) {
+                window.alert('Please select booking slot(s) before submission.')
+            } else {
+                // add to sessionstorage as string
+                sessionStorage.setItem('selectedSessions', JSON.stringify(selectedSessions));
+                // redirect to confirmation page
+                location.href = 'confirmation.html';
+            }
         }
 </script>
 </body>
