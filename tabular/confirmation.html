@@ -102,5 +102,24 @@
     </div>
 
     <script src="confirmation_script.js"></script>
+    <script src="logging.js"></script>
+    <script>
+      function sendCustomEvent() {
+          console.log('sendCustomEvent');
+          document.dispatchEvent(new CustomEvent('myevent', { detail: {
+              eventName: 'myeventName',
+              info: {'key1': 'val1', 'key2': 'val2'}
+          }}));
+      }
+      document.addEventListener('myevent', loggingjs.logEvent, true);
+
+      function sendCustomEvent2() {
+          console.log('sendCustomEvent2');
+          loggingjs.logEvent(null, 'myevent2', {
+              eventName: 'myeventName',
+              info: {'key1': 'val1', 'key2': 'val2'}
+          });
+      }
+    </script>
   </body>
 </html>

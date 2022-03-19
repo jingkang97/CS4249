@@ -23,7 +23,7 @@
         <div id="monthrows">
           <div class="monthcolumn">
             <div>
-              <input type="checkbox" id="Mar22" /><label>Mar/2022</label>
+              <input type="checkbox" id="Mar22"/><label>Mar/2022</label>
             </div>
             <div>
               <input type="checkbox" id="Jul22" /><label>Jul/2022</label>
@@ -138,5 +138,24 @@
     </div>
 
     <script src="script.js"></script>
+    <script src="logging.js"></script>
+    <script>
+      function sendCustomEvent() {
+          console.log('sendCustomEvent');
+          document.dispatchEvent(new CustomEvent('myevent', { detail: {
+              eventName: 'myeventName',
+              info: {'key1': 'val1', 'key2': 'val2'}
+          }}));
+      }
+      document.addEventListener('myevent', loggingjs.logEvent, true);
+
+      function sendCustomEvent2() {
+          console.log('sendCustomEvent2');
+          loggingjs.logEvent(null, 'myevent2', {
+              eventName: 'myeventName',
+              info: {'key1': 'val1', 'key2': 'val2'}
+          });
+      }
+    </script>
   </body>
 </html>
