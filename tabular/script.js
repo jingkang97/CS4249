@@ -1,3 +1,4 @@
+sessionStorage.removeItem('slots') // reset selected slots when back to filter page
 var month_ids = JSON.parse(sessionStorage.getItem('month'))
 if (!month_ids) {
     month_ids = {'Mar22': false, 'Jul22': false, 'Nov22': false, 'Apr22': false, 'Aug22': false, 'Dec22': false, 'May22': false, 'Sep22': false, 'Jan23': false, 'Jun22': false, 'Oct22': false, 'Feb22': false}

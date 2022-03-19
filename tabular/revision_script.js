@@ -177,18 +177,25 @@ for (i in selected_months) {
     }
 }
 
-var selected_slots = []
-sessionStorage.setItem('slots', JSON.stringify(selected_slots))
+var selected_slots = sessionStorage.getItem('slots')
+if (!selected_slots) {
+    selected_slots = []
+} else {
+    selected_slots = selected_slots.split(',')
+    selected_slots.forEach((slot_id) => {
+        document.getElementById(slot_id).checked = true
+    })
+}
 var cbs = document.querySelectorAll('[type="checkbox"]');
 [].forEach.call(cbs, function(cb) {
     cb.addEventListener("click", function() {
         console.log(this.id)
         if (this.checked) {
             selected_slots.push(this.id)
-            sessionStorage.setItem('slots', JSON.stringify(selected_slots))
+            sessionStorage.setItem('slots', selected_slots.toString())
         } else {
             selected_slots = selected_slots.filter(item => item !== this.id)
-            sessionStorage.setItem('slots', JSON.stringify(selected_slots))
+            sessionStorage.setItem('slots', selected_slots.toString())
         }
         console.log(sessionStorage.getItem('slots'))
     })

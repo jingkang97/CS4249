@@ -28,7 +28,7 @@
           <th>Venue Charge</th>
         </tr>
         <!-- Dummy data -->
-        <tr class="confirmation-slot">
+        <!-- <tr class="confirmation-slot">
           <td>01/03/2022 Tue</td>
           <td style="text-align: center">8</td>
           <td>14:10-15:00</td>
@@ -53,18 +53,18 @@
           <td style="text-align: center">BBDC</td>
           <td style="color: maroon; font-weight: bold">$13.91</td>
           <td style="color: maroon; font-weight: bold">$0.00</td>
-        </tr>
+        </tr> -->
 
-        <tr>
-          <td colspan="4" style="font-weight: bold">Total:</td>
-          <td style="color: maroon; font-weight: bold">$41.73</td>
-          <td style="color: maroon; font-weight: bold">$0.00</td>
+        <tr id="total_row">
+          <td colspan="4" style="font-weight: bold; text-align: right;">Total:</td>
+          <td id="total_session_charge" style="color: maroon; font-weight: bold">$0.00</td>
+          <td id="total_venue_charge" style="color: maroon; font-weight: bold">$0.00</td>
         </tr>
       </table>
     </div>
 
     <div id="confirmation-summary">
-      <table>
+      <table style="width: 100%;">
         <tr>
           <td class="title">Account ID:</td>
           <td class="value">424900</td>
@@ -72,7 +72,7 @@
 
         <tr>
           <td class="title">Total Session Charge:</td>
-          <td class="value">$41.73</td>
+          <td id="total_session_charge_value" class="value">$0.00</td>
         </tr>
 
         <tr>
@@ -82,7 +82,7 @@
 
         <tr>
           <td class="title">Grand Total:</td>
-          <td class="value">$41.73</td>
+          <td id="grand_total_value" class="value">$0.00</td>
         </tr>
       </table>
     </div>
@@ -92,6 +92,6 @@
       <button><a href="success.html">Confirm</a></button>
     </div>
 
-    <script src="script.js"></script>
+    <script src="confirmation_script.js"></script>
   </body>
 </html>
