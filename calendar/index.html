@@ -225,6 +225,10 @@
             },
         })
 
+        if (document.querySelector(".selectedSlott").innerHTML.length == 0) {
+            document.querySelector(".selectedSlott").innerHTML = `<p>Please select a timeslot above.</p>`
+        }
+
         let selectedSlots = [];
         let selected_slots_html = '';
         
