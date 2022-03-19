@@ -15,10 +15,10 @@ const selected_months_string = () => {
 const selected_sessions = JSON.parse(sessionStorage.getItem('session'))
 const selected_sessions_string = () => {
     var string = ''
-    if (selected_sessions['allsessions']) {
-        string = '1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16'
-        return string
-    }
+    // if (selected_sessions['allsessions']) {
+    //     string = '1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16'
+    //     return string
+    // }
     for (var i = 1; i <= 16; i++) {
         if (selected_sessions[i.toString()]) {
             string += i.toString() + ', '
@@ -33,10 +33,10 @@ const selected_sessions_string = () => {
 const selected_days = JSON.parse(sessionStorage.getItem('day'))
 const selected_days_string = () => {
     var string = ''
-    if (selected_days['alldays']) {
-        string = 'Mon, Tue, Wed, Thu, Fri, Sat, Sun'
-        return string
-    }
+    // if (selected_days['alldays']) {
+    //     string = 'Mon, Tue, Wed, Thu, Fri, Sat, Sun'
+    //     return string
+    // }
     const keys = Object.keys(selected_days)
     for (var i = 0; i < keys.length - 1; i++) {
         if (selected_days[keys[i]]) {
@@ -60,7 +60,6 @@ function createHeader(header_name) {
 }
 
 function createSessionRow(date, day) {
-    date = date.substring(0,10)
     let row = document.createElement('tr')
     let date_cell = document.createElement('td')
     date_cell.innerHTML = date + '\n' + day
@@ -71,8 +70,9 @@ function createSessionRow(date, day) {
     return row
 }
 
+const session_timings = ["", "08:30", "09:30", "10:30", "11:30", "12:30", "13:30", "14:30", "15:30", "16:30", "17:30", "18:30", "19:30", "20:30", "21:30", "22:30"]
+
 function createDescription(date, day, session) {
-    const session_timings = ["", "08:30", "09:30", "10:30", "11:30", "12:30", "13:30", "14:30", "15:30", "16:30", "17:30", "18:30", "19:30", "20:30", "21:30", "22:30"]
     let description = document.createElement('div')
     description.setAttribute('class', 'session_description')
 
@@ -121,15 +121,9 @@ var headers = [
     createHeader("Venue")
 ]
 const session_ids = Object.keys(selected_sessions)
-if (selected_sessions["allsessions"]) {
-    for (var i = 1; i <= 16; i++) {
-        headers.push(createHeader("Session " + i.toString()))
-    }
-} else {
-    for (var i = 0; i < session_ids.length-1; i++) {
-        if (selected_sessions[session_ids[i]]) {
-            headers.push(createHeader("Session " + session_ids[i].toString()))
-        }
+for (var i = 0; i < session_ids.length; i++) {
+    if (selected_sessions[session_ids[i]]) {
+        headers.push(createHeader("Session " + session_ids[i].toString()))
     }
 }
 headers.forEach(header_cell => {
@@ -150,16 +144,18 @@ for (i in selected_months) {
             console.log(session_date)
             let day = session_date.getDay()
             console.log(day)
-            if (selected_days['alldays'] || selected_days[days[day]]) {
+            if (selected_days[days[day]]) {
                 let day_string = days[day].charAt(0).toUpperCase() + days[day].slice(1)
-                let date_string = session_date.toLocaleString('en-GB')
+                let date_string = session_date.toLocaleString('en-GB').substring(0,10)
                 let session_row = createSessionRow(date_string, day_string)
                 for (let j = 1; j <= 14; j++) {
-                    if (selected_sessions['allsessions'] || selected_sessions[j]) {
+                    if (selected_sessions[j]) {
                         let session_cell = document.createElement('td')
                         session_cell.setAttribute('class', 'session_cell')
                         let checkbox = document.createElement('input')
                         checkbox.setAttribute('type', 'checkbox')
+                        let id = date_string + ' ' + day_string + '|' + j.toString() + '|' + session_timings[j] + '-' + session_timings[j+1] + '|' + 'BBDC'
+                        checkbox.setAttribute('id', id)
                         session_cell.appendChild(checkbox)
                         let description = document.createElement('span')
                         description.setAttribute('class', 'hover_description')
@@ -170,7 +166,7 @@ for (i in selected_months) {
                     }
                 }
                 for (let j = 15; j <= 16; j++) {
-                    if (selected_sessions['allsessions'] || selected_sessions[j]) {
+                    if (selected_sessions[j]) {
                         let session_cell = document.createElement('td')
                         session_row.appendChild(session_cell)
                     }
@@ -181,13 +177,19 @@ for (i in selected_months) {
     }
 }
 
-// // Create an empty <tr> element and add it to the 1st position of the table:
-// var row = table.insertRow(0);
-
-// // Insert new cells (<td> elements) at the 1st and 2nd position of the "new" <tr> element:
-// var cell1 = row.insertCell(0);
-// var cell2 = row.insertCell(1);
-
-// // Add some text to the new cells:
-// cell1.innerHTML = "NEW CELL1";
-// cell2.innerHTML = "NEW CELL2";
+var selected_slots = []
+sessionStorage.setItem('slots', JSON.stringify(selected_slots))
+var cbs = document.querySelectorAll('[type="checkbox"]');
+[].forEach.call(cbs, function(cb) {
+    cb.addEventListener("click", function() {
+        console.log(this.id)
+        if (this.checked) {
+            selected_slots.push(this.id)
+            sessionStorage.setItem('slots', JSON.stringify(selected_slots))
+        } else {
+            selected_slots = selected_slots.filter(item => item !== this.id)
+            sessionStorage.setItem('slots', JSON.stringify(selected_slots))
+        }
+        console.log(sessionStorage.getItem('slots'))
+    })
+})
