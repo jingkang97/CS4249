@@ -1,0 +1,27 @@
+<html>
+    <head>
+        <title>Confirmation</title>
+    </head>
+    <body>
+        <div class="container">
+            <div class="message"></div>
+            <div id="confirmed-slots"></div>
+            <a href="index.html"><button>View more slots</button></a>
+        </div>
+    </body>
+</html>
+
+<script>
+    // get from sessionstorage as object
+    var confirmedSessions = JSON.parse(sessionStorage.getItem('selectedSessions'));
+
+    let allConfirmedSlotsHtml = '';
+    for (const value of Object.values(confirmedSessions)) {
+        allConfirmedSlotsHtml += `
+        <div>
+            <p>${value.date}, ${value.slot}, Session ${value.session} </p>
+        </div>
+        `
+    }
+    document.getElementById('confirmed-slots').innerHTML = allConfirmedSlotsHtml;
+</script>

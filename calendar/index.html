@@ -42,7 +42,7 @@
         </div>
     </div>
     <div class="button-container" onClick="clickSubmitHandler()">
-        <button class="submit-button">Submit</button>
+        <a href="confirmation.html"><button class="submit-button">Submit</button></a>
     </div>
 
     <div id="demo"></div>
@@ -234,7 +234,6 @@
         function clickAvailTimeSlotHandler(element) {
             const currDate = document.getElementById('selected-date').innerHTML;
             const sessionNo = element.innerHTML.split("Session")[1].trim().charAt(0);
-
             // add selected timeslot html only if timeslot not found in dict
             const key = currDate + sessionNo;
             if (!(key in selectedSessions)) {
@@ -242,6 +241,7 @@
                 element.className = "avail-timeslot selected";
                 selectedSessions[key] = {
                     date: currDate,
+                    slot: element.querySelector(".event-slot").innerHTML,
                     session: sessionNo,
                     innerHTML: element.innerHTML
                 };
@@ -269,8 +269,11 @@
 
         function clickSubmitHandler() {
             console.log("submit clicked with selectedSessions: ", selectedSessions);
-        }
+            document.getElementById('demoo').innerHTML = JSON.stringify(selectedSessions);
 
+            // add to sessionstorage as string
+            sessionStorage.setItem('selectedSessions', JSON.stringify(selectedSessions));
+        }
 </script>
 </body>
 </html>
