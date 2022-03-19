@@ -1,3 +1,4 @@
+sessionStorage.removeItem('slots') // reset selected slots when back to filter page
 var month_ids = JSON.parse(sessionStorage.getItem('month'))
 if (!month_ids) {
     month_ids = {'Mar22': false, 'Jul22': false, 'Nov22': false, 'Apr22': false, 'Aug22': false, 'Dec22': false, 'May22': false, 'Sep22': false, 'Jan23': false, 'Jun22': false, 'Oct22': false, 'Feb22': false}
@@ -18,13 +19,13 @@ if (!session_ids) {
         }
         document.getElementById(i).checked = session_ids[i]
     }
-}
-if (all) {
-    document.getElementById('allsessions').checked = true
+    if (all) {
+        document.getElementById('allsessions').checked = true
+    }
 }
 
 all = true
-const day_ids = JSON.parse(sessionStorage.getItem('day'))
+var day_ids = JSON.parse(sessionStorage.getItem('day'))
 if (!day_ids) {
     day_ids = {'mon': false, 'tue': false, 'wed': false, 'thu': false, 'fri': false, 'sat': false, 'sun': false}
 } else {
@@ -34,9 +35,10 @@ if (!day_ids) {
         }
         document.getElementById(i).checked = day_ids[i]
     }
-}
-if (all) {
-    document.getElementById('alldays').checked = true
+    if (all) {
+        document.getElementById('alldays').checked = true
+    }
+    
 }
 
 var cbs = document.querySelectorAll('[type="checkbox"]');

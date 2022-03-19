@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Revision</title>
+    <title>Slot Selection</title>
 </head>
 <body>
     <h3 style="color: #001251; text-decoration: underline; line-height: 0;">Booking For 3A Driving Simulator Practical Training</h3>
@@ -28,14 +28,14 @@
 
     <div id="slot_listing">
         <div class="slot_listing_header"><li><span>Slots Listing</span></li></div>
-        <p style="color: #0051b4; font-size: 14px;">Below are the only slots that are available based on your schedule seleciton. Please tick to select the date and then click "<b>Submit</b>". Click "<b><< Back</b>" to select other schedule. Click "<b>View Booking</b>" to view valid unattended booking based on the schedule you selected.</p>
+        <p style="color: #0051b4; font-size: 14px;">Below are the only slots that are available based on your schedule seleciton. Please tick to select the date and then click "<b>Submit</b>". Click "<b><< Back</b>" to select other schedule.</p>
 
         <table id="slots"></table>
 
     </div>
 
-    <button><a href="index.html">&lt;&lt; Back</a></button>
-    <button><a href="confirmation.html">Submit</a></button>
+    <button style="margin-left: 0px;"><a href="index.html">&lt;&lt; Back</a></button>
+    <button style="margin-left: 2px;" id="submit"><a href="confirmation.html">Submit</a></button>
 
     <!-- <span>
     <div class="session_description">
@@ -51,6 +51,6 @@
     </div>
     </span> -->
 
-    <script src="revision_script.js"></script>
+    <script src="selection_script.js"></script>
 </body>
 </html>
