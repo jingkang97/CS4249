@@ -177,6 +177,11 @@ for (i in selected_months) {
     }
 }
 
+if (slots_table.rows.length <= 1) {
+    alert('No slots found that fits your selection! Please click try again and reselect.')
+    document.location.href = "index.html"
+}
+
 var selected_slots = sessionStorage.getItem('slots')
 if (!selected_slots) {
     selected_slots = []
