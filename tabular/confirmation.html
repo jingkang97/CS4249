@@ -1,12 +1,97 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="stylesheet" type="text/css" href="style.css" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Confirmation</title>
-</head>
-<body>
-    
-</body>
+  </head>
+  <body>
+    <h3 style="color: #061249; text-decoration: bold; line-height: 0">
+      Booking For 3A Driving Simulator Practical Training Confirmation
+    </h3>
+    <p style="color: #151c4b">
+      Below is the schedule you selected, please click "<b>Confirm</b>" to
+      confirm the slot. <br />
+      Click "<b> << Back</b>" if you want to reselect other schedule.
+    </p>
+
+    <div id="confirmation-main">
+      <table id="confirmation-table">
+        <tr id="header">
+          <th>Training Date</th>
+          <th style="text-align: center">Session</th>
+          <th>Time</th>
+          <th style="text-align: center">Training Venue</th>
+          <th>Session Charge</th>
+          <th>Venue Charge</th>
+        </tr>
+        <!-- Dummy data -->
+        <tr class="confirmation-slot">
+          <td>01/03/2022 Tue</td>
+          <td style="text-align: center">8</td>
+          <td>14:10-15:00</td>
+          <td style="text-align: center">BBDC</td>
+          <td style="color: maroon; font-weight: bold">$13.91</td>
+          <td style="color: maroon; font-weight: bold">$0.00</td>
+        </tr>
+
+        <tr class="confirmation-slot">
+          <td>01/03/2022 Tue</td>
+          <td style="text-align: center">9</td>
+          <td>15:20-16:10</td>
+          <td style="text-align: center">BBDC</td>
+          <td style="color: maroon; font-weight: bold">$13.91</td>
+          <td style="color: maroon; font-weight: bold">$0.00</td>
+        </tr>
+
+        <tr class="confirmation-slot">
+          <td>01/03/2022 Tue</td>
+          <td style="text-align: center">10</td>
+          <td>16:10-17:00</td>
+          <td style="text-align: center">BBDC</td>
+          <td style="color: maroon; font-weight: bold">$13.91</td>
+          <td style="color: maroon; font-weight: bold">$0.00</td>
+        </tr>
+
+        <tr>
+          <td colspan="4" style="font-weight: bold">Total:</td>
+          <td style="color: maroon; font-weight: bold">$41.73</td>
+          <td style="color: maroon; font-weight: bold">$0.00</td>
+        </tr>
+      </table>
+    </div>
+
+    <div id="confirmation-summary">
+      <table>
+        <tr>
+          <td class="title">Account ID:</td>
+          <td class="value">424900</td>
+        </tr>
+
+        <tr>
+          <td class="title">Total Session Charge:</td>
+          <td class="value">$41.73</td>
+        </tr>
+
+        <tr>
+          <td class="title">Total Venue Charge:</td>
+          <td class="value">$0.00</td>
+        </tr>
+
+        <tr>
+          <td class="title">Grand Total:</td>
+          <td class="value">$41.73</td>
+        </tr>
+      </table>
+    </div>
+
+    <div class="button-container">
+      <button><a href="revision.html"><< Back</a></button>
+      <button><a href="success.html">Confirm</a></button>
+    </div>
+
+    <script src="script.js"></script>
+  </body>
 </html>

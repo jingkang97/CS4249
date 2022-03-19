@@ -1,94 +1,140 @@
 <!DOCTYPE html>
 <html>
-<head>
-	<link rel="stylesheet" type="text/css" href="style.css">
-	<meta charset="utf-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<title>Tabular Schedule</title>
-</head>
-<body>
-	<h3 style="color: #061249; text-decoration: bold; line-height: 0;">Booking For 3A Driving Simulator Practical Training</h3>
-	<p style="color: #151C4B; line-height: 0;">Please tick to select the Month & Session then click "<b>Show</b>".</p>
-	<p style="color: #FD001D; line-height: 0;">Please ensure your membership is active to enable booking for your training/test slots.</p>
-	<div clas="main">
-	<div id="months">
-		<div class="header">Months: </div>
-		<div id="monthrows">
-			<div class="monthcolumn">
-				<div><input type="checkbox" id="Mar22"><label>Mar/2022</label></div>
-				<div><input type="checkbox" id="Jul22"><label>Jul/2022</label></div>
-				<div><input type="checkbox" id="Nov22"><label>Nov/2022</label></div>
-			</div>
-			<div class="monthcolumn">
-				<div><input type="checkbox" id="Apr22"><label>Apr/2022</label></div>
-				<div><input type="checkbox" id="Aug22"><label>Aug/2022</label></div>
-				<div><input type="checkbox" id="Dec22"><label>Dec/2022</label></div>
-			</div>
-			<div class="monthcolumn">
-				<div><input type="checkbox" id="May22"><label>May/2022</label></div>
-				<div><input type="checkbox" id="Sep22"><label>Sep/2022</label></div>
-				<div><input type="checkbox" id="Jan23"><label>Jan/2023</label></div>
-			</div>
-			<div class="monthcolumn">
-				<div><input type="checkbox" id="Jun22"><label>Jun/2022</label></div>
-				<div><input type="checkbox" id="Oct22"><label>Oct/2022</label></div>
-				<div><input type="checkbox" id="Feb22"><label>Feb/2023</label></div>
-			</div>
-		</div>
-			
-	</div>
-	<div id="session">
-		<div class="header">Session:</div>
-		<div id="sessionrows">
-			<div id="normalsession">
-				<div><input type="checkbox" id="1"><label>1</label></div>
-				<div style="padding-right: 9px;"><input type="checkbox" id="2"><label>2</label></div>
-				<div style="padding-right: 9px;"><input type="checkbox" id="3"><label>3</label></div>
-				<div style="padding-right: 9px;"><input type="checkbox" id="4"><label>4</label></div>
-				<div style="padding-right: 9px;"><input type="checkbox" id="5"><label>5</label></div>
-				<div style="padding-right: 9px;"><input type="checkbox" id="6"><label>6</label></div>
-				<div style="padding-right: 9px;"><input type="checkbox" id="7"><label>7</label></div>
-				<div style="padding-right: 9px;"><input type="checkbox" id="8"><label>8</label></div>
-			</div>
-			<div id="normalsession">
-				<div><input type="checkbox" id="9"><label>9</label></div>
-				<div><input type="checkbox" id="10"><label>10</label></div>
-				<div><input type="checkbox" id="11"><label>11</label></div>
-				<div><input type="checkbox" id="12"><label>12</label></div>
-				<div><input type="checkbox" id="13"><label>13</label></div>
-				<div><input type="checkbox" id="14"><label>14</label></div>
-				<div><input type="checkbox" id="15"><label>15</label></div>
-				<div><input type="checkbox" id="16"><label>16</label></div>
-			</div>
-			<div>
-				<input type="checkbox" id="allsessions"><label>All Sessions</label>
-			</div>
-		</div>
-	</div>
-	<div id="days">
-		<div class="header">Day:</div>
-		<div id="daysrows">
-			<div id="normaldays">
-				<input type="checkbox" id="mon"><label>Mon</label>
-				<input type="checkbox" id="tue"><label>Tue</label>
-				<input type="checkbox" id="wed"><label>Wed</label>
-				<input type="checkbox" id="thu"><label>Thu</label>
-				<input type="checkbox" id="fri"><label>Fri</label>
-				<input type="checkbox" id="sat"><label>Sat</label>
-				<input type="checkbox" id="sun"><label>Sun</label>
-			</div>
-			<div>
-				<input type="checkbox" id="alldays"><label>All Days</label>
-			</div>
-		</div>
-		
-	</div>
-	<div id="venue">
-		<div class="header">Your Venue:</div> <input type="radio"><label>BBDC</label>
-	</div>
-	<button><a href="revision.html">Search</a></button>
-	</div>
+  <head>
+    <link rel="stylesheet" type="text/css" href="style.css" />
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Tabular Schedule</title>
+  </head>
+  <body>
+    <h3 style="color: #061249; text-decoration: bold; line-height: 0">
+      Booking For 3A Driving Simulator Practical Training
+    </h3>
+    <p style="color: #151c4b; line-height: 0">
+      Please tick to select the Month & Session then click "<b>Show</b>".
+    </p>
+    <p style="color: #fd001d; line-height: 0">
+      Please ensure your membership is active to enable booking for your
+      training/test slots.
+    </p>
+    <div clas="main">
+      <div id="months">
+        <div class="header">Months:</div>
+        <div id="monthrows">
+          <div class="monthcolumn">
+            <div>
+              <input type="checkbox" id="Mar22" /><label>Mar/2022</label>
+            </div>
+            <div>
+              <input type="checkbox" id="Jul22" /><label>Jul/2022</label>
+            </div>
+            <div>
+              <input type="checkbox" id="Nov22" /><label>Nov/2022</label>
+            </div>
+          </div>
+          <div class="monthcolumn">
+            <div>
+              <input type="checkbox" id="Apr22" /><label>Apr/2022</label>
+            </div>
+            <div>
+              <input type="checkbox" id="Aug22" /><label>Aug/2022</label>
+            </div>
+            <div>
+              <input type="checkbox" id="Dec22" /><label>Dec/2022</label>
+            </div>
+          </div>
+          <div class="monthcolumn">
+            <div>
+              <input type="checkbox" id="May22" /><label>May/2022</label>
+            </div>
+            <div>
+              <input type="checkbox" id="Sep22" /><label>Sep/2022</label>
+            </div>
+            <div>
+              <input type="checkbox" id="Jan23" /><label>Jan/2023</label>
+            </div>
+          </div>
+          <div class="monthcolumn">
+            <div>
+              <input type="checkbox" id="Jun22" /><label>Jun/2022</label>
+            </div>
+            <div>
+              <input type="checkbox" id="Oct22" /><label>Oct/2022</label>
+            </div>
+            <div>
+              <input type="checkbox" id="Feb22" /><label>Feb/2023</label>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div id="session">
+        <div class="header">Session:</div>
+        <div id="sessionrows">
+          <div id="normalsession">
+            <div><input type="checkbox" id="1" /><label>1</label></div>
+            <div style="padding-right: 9px">
+              <input type="checkbox" id="2" /><label>2</label>
+            </div>
+            <div style="padding-right: 9px">
+              <input type="checkbox" id="3" /><label>3</label>
+            </div>
+            <div style="padding-right: 9px">
+              <input type="checkbox" id="4" /><label>4</label>
+            </div>
+            <div style="padding-right: 9px">
+              <input type="checkbox" id="5" /><label>5</label>
+            </div>
+            <div style="padding-right: 9px">
+              <input type="checkbox" id="6" /><label>6</label>
+            </div>
+            <div style="padding-right: 9px">
+              <input type="checkbox" id="7" /><label>7</label>
+            </div>
+            <div style="padding-right: 9px">
+              <input type="checkbox" id="8" /><label>8</label>
+            </div>
+          </div>
+          <div id="normalsession">
+            <div><input type="checkbox" id="9" /><label>9</label></div>
+            <div><input type="checkbox" id="10" /><label>10</label></div>
+            <div><input type="checkbox" id="11" /><label>11</label></div>
+            <div><input type="checkbox" id="12" /><label>12</label></div>
+            <div><input type="checkbox" id="13" /><label>13</label></div>
+            <div><input type="checkbox" id="14" /><label>14</label></div>
+            <div><input type="checkbox" id="15" /><label>15</label></div>
+            <div><input type="checkbox" id="16" /><label>16</label></div>
+          </div>
+          <div>
+            <input type="checkbox" id="allsessions" /><label
+              >All Sessions</label
+            >
+          </div>
+        </div>
+      </div>
+      <div id="days">
+        <div class="header">Day:</div>
+        <div id="daysrows">
+          <div id="normaldays">
+            <input type="checkbox" id="mon" /><label>Mon</label>
+            <input type="checkbox" id="tue" /><label>Tue</label>
+            <input type="checkbox" id="wed" /><label>Wed</label>
+            <input type="checkbox" id="thu" /><label>Thu</label>
+            <input type="checkbox" id="fri" /><label>Fri</label>
+            <input type="checkbox" id="sat" /><label>Sat</label>
+            <input type="checkbox" id="sun" /><label>Sun</label>
+          </div>
+          <div>
+            <input type="checkbox" id="alldays" /><label>All Days</label>
+          </div>
+        </div>
+      </div>
+      <div id="venue">
+        <div class="header">Your Venue:</div>
+        <input type="radio" /><label>BBDC</label>
+      </div>
+      <button><a href="revision.html">Search</a></button>
+    </div>
 
-	<script src="script.js"></script>
-</body>
+    <script src="script.js"></script>
+  </body>
 </html>
