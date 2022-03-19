@@ -52,6 +52,7 @@
     </div>
 
     <div id="demo"></div>
+    <div id="demoo"></div>
 </div>
 <script src="https://cdn.jsdelivr.net/npm/color-calendar@1.0.5/dist/bundle.min.js"></script>
 <!-- <script src="calendar/script.js"></script> -->
@@ -235,8 +236,12 @@
         
         let selected_slots_html = '';
 
-        let selectedDatesObj = {'hello' : 'ni hao'};
-        
+        var dict = {};
+
+
+        // true if "key" doesn't exist in object
+        console.log(!("key" in obj));
+
         function displaySelectedSlot(element) {
 
                 console.log(element);
@@ -248,12 +253,28 @@
                 selected_slots_html += '</div>'
                 document.querySelector(".selectedSlott").innerHTML = selected_slots_html;
 
-                selectedDatesArr.push(currDate);
-                document.getElementById('demo').innerHTML = selectedDatesArr.toString();
+                // selectedDatesArr.push(currDate);
+                // document.getElementById('demo').innerHTML = selectedDatesArr.toString();
+
+                // get selected session no.
+                const sessionNo = element.innerHTML.split("Session")[1].trim().charAt(0);
+
+                // true if "key" in dict
+                if (currDate in dict) {
+                    // if value does not exists
+                    if (!dict[currDate].includes(sessionNo)) {
+                        //add value to dict
+                        dict[currDate].push(sessionNo);
+                    }
+                } else {
+                    // add key-value to dict with value initialized as array
+                    dict[currDate] = [sessionNo];
+                }
+                // display dict items
+                document.getElementById('demoo').innerHTML = JSON.stringify(dict);
             }
 
-        // document.getElementById("demo").innerHTML = selectedDatesArr;
-        // console.log(selectedDatesArr);
+
         //     ul = document.createElement('ul');
 
         //         document.getElementById('demo').appendChild(ul);
