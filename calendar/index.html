@@ -233,65 +233,47 @@
         }
 
         let selectedDatesArr = [];
-        
         let selected_slots_html = '';
-
         var dict = {};
 
-
-        // true if "key" doesn't exist in object
-        console.log(!("key" in obj));
+        function hasKeySetTo(obj, key, value) {
+            return obj.hasOwnProperty(key) && obj[key].includes(value);
+        }
 
         function displaySelectedSlot(element) {
 
-                console.log(element);
+            console.log(element);
 
-                const currDate = document.getElementById('selected-date').innerHTML;
+            const currDate = document.getElementById('selected-date').innerHTML;
+
+            // get selected session no.
+            const sessionNo = element.innerHTML.split("Session")[1].trim().charAt(0);
+
+            // add selected timeslot html only if timeslot not found in dict
+            if (!hasKeySetTo(dict, currDate, sessionNo)) {
                 selected_slots_html += `<div class="selected-timeslot">`;
                 selected_slots_html += `<b>` + currDate + `</b>`;
                 selected_slots_html += element.innerHTML;
                 selected_slots_html += '</div>'
                 document.querySelector(".selectedSlott").innerHTML = selected_slots_html;
-
-                // selectedDatesArr.push(currDate);
-                // document.getElementById('demo').innerHTML = selectedDatesArr.toString();
-
-                // get selected session no.
-                const sessionNo = element.innerHTML.split("Session")[1].trim().charAt(0);
-
-                // true if "key" in dict
-                if (currDate in dict) {
-                    // if value does not exists
-                    if (!dict[currDate].includes(sessionNo)) {
-                        //add value to dict
-                        dict[currDate].push(sessionNo);
-                    }
-                } else {
-                    // add key-value to dict with value initialized as array
-                    dict[currDate] = [sessionNo];
-                }
-                // display dict items
-                document.getElementById('demoo').innerHTML = JSON.stringify(dict);
             }
 
+            // true if "key" in dict
+            if (currDate in dict) {
+                // if value does not exists
+                if (!dict[currDate].includes(sessionNo)) {
+                    //add value to dict
+                    dict[currDate].push(sessionNo);
+                }
+            } else {
+                // add key-value to dict with value initialized as array
+                dict[currDate] = [sessionNo];
+            }
 
-        //     ul = document.createElement('ul');
+            // display dict items
+            document.getElementById('demoo').innerHTML = JSON.stringify(dict);
+        }
 
-        //         document.getElementById('demo').appendChild(ul);
-
-        //         selectedDatesArr.forEach(function (date) {
-        //             let li = document.createElement('li');
-        //             ul.appendChild(li);
-
-        //             li.innerHTML += date;
-        //         });
-
-        // function displaySelectedSlot(element) {
-            
-        //     document.querySelector(".selectedSlott").innerHTML = element.innerHTML;
-        //     // var demo = document.getElementById("selected");
-        //     // demo.style.color = "green";
-        // }
 </script>
 </body>
 </html>
