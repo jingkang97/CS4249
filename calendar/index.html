@@ -220,8 +220,6 @@
                 });
                 if(events_html) {
                     events_display.innerHTML = events_html;
-                    // this prints element in console but not sure where to pass data
-                    events_display.onclick = function(e){console.log(e)};
                 } else {
                     events_display.innerHTML = '<div class="no-events-text">There are no more available slots. <br> Please select an available date that is marked in green.</div>';
                 }
