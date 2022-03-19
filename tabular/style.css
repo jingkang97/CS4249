@@ -1,107 +1,148 @@
-html{
-	font-family: Arial, sans-serif;
+html {
+  font-family: Arial, sans-serif;
 }
-div{
-	margin-bottom: 5px;
+div {
+  margin-bottom: 5px;
 }
-input{
-	margin-left: 20px;
+input {
+  margin-left: 20px;
 }
-button{
-	margin-top: 20px;
-	margin-left: 20px;
-	background: #0766CF;
-	color: white;
-	border: black solid 1px;
-	font-weight: bold;
+button {
+  margin-top: 20px;
+  margin-left: 20px;
+  background: #0766cf;
+  color: white;
+  border: black solid 1px;
+  font-weight: bold;
 }
-button:hover{
-	background: #11DCFF;
+button:hover {
+  background: #11dcff;
 }
-.header{
-	display: flex;
-	flex-direction: row;
-	justify-content: flex-end;
-	font-weight: bold;
-	min-width: 90px;
+.header {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+  font-weight: bold;
+  min-width: 90px;
 }
-#normalsession, #monthrows, #normaldays, #venue, #selected_info{
-	display: flex;
+#normalsession,
+#monthrows,
+#normaldays,
+#venue,
+#selected_info {
+  display: flex;
 }
-#months, #session, #days{
-	display: flex;
-	flex-direction: row;
-	margin-bottom: 50px;
+#months,
+#session,
+#days {
+  display: flex;
+  flex-direction: row;
+  margin-bottom: 50px;
 }
 .monthcolumn {
-	display: flex;
-	flex-direction: column;
-	margin-right: 50px;
+  display: flex;
+  flex-direction: column;
+  margin-right: 50px;
 }
 
 .main {
-	/* not working sia idk why */
-	padding: 300px;
-	background-color: thistle;
+  /* not working sia idk why */
+  padding: 300px;
+  background-color: thistle;
 }
 
 a {
-	color: white;
-	text-decoration: none;
+  color: white;
+  text-decoration: none;
 }
 
 .info_label {
-	display: flex;
-	flex-direction: row;
-	justify-content: flex-end;
-	font-weight: bold;
-	min-width: 90px;
-	margin-right: 10px;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+  font-weight: bold;
+  min-width: 90px;
+  margin-right: 10px;
 }
 
 .slot_listing_header {
-	background-color: #0097D9;
-	padding: 5px;
+  background-color: #0097d9;
+  padding: 5px;
 }
 
 .slot_listing_header li {
-	color: white;
-	font-weight: bold;
-	list-style-type: square;
+  color: white;
+  font-weight: bold;
+  list-style-type: square;
 }
 
 li span {
-	position: relative;
-	left: -10px;
+  position: relative;
+  left: -10px;
 }
 
-table, td, th {
-	border: 1px solid;
-	border-color: #515151;
+table,
+td,
+th {
+  border: 1px solid;
+  border-color: #515151;
 }
 
 table {
-	width: 100%;
+  width: 100%;
 }
 
 th {
-	background-color: #FF7962;
-	border-bottom: 5px solid;
-	border-color: #515151;
+  background-color: #ff7962;
+  border-bottom: 5px solid;
+  border-color: #515151;
 }
 
 td {
-	width: 10%;
+  width: 10%;
 }
-  
+
 table {
-	width: 100%;
-	border-collapse: collapse;
-	border-color: #515151;
+  width: 100%;
+  border-collapse: collapse;
+  border-color: #515151;
 }
 
+#confirmation-table {
+  border-color: #000000;
+  border: 1px solid;
+  text-align: right;
+}
 
+#header th {
+  background-color: #cfcfcf;
+  border: 1px solid #000000;
+  padding: 3px;
+}
 
+.confirmation-slot td {
+  background-color: white;
+  border: 1px solid #000000;
+  font-weight: 100;
+  padding: 2px;
+}
 
+#confirmation-summary table {
+  width: fit-content;
+  max-width: 500px;
+  margin: 40px 0 40px 0;
+  border: none;
+  font-weight: bold;
+}
 
+.title {
+  text-align: right;
+  border: none;
+  padding: 3px;
+}
 
+.value {
+  padding-left: 10px;
+  color: maroon;
+  border: none;
+}
