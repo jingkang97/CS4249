@@ -24,9 +24,8 @@ button:hover{
 	justify-content: flex-end;
 	font-weight: bold;
 	min-width: 90px;
-
 }
-#normalsession, #monthrows, #normaldays, #venue{
+#normalsession, #monthrows, #normaldays, #venue, #selected_info{
 	display: flex;
 }
 #months, #session, #days{
@@ -38,6 +37,61 @@ button:hover{
 	display: flex;
 	flex-direction: column;
 	margin-right: 50px;
+}
+
+a {
+	color: white;
+	text-decoration: none;
+}
+
+.info_label {
+	display: flex;
+	flex-direction: row;
+	justify-content: flex-end;
+	font-weight: bold;
+	min-width: 90px;
+	margin-right: 10px;
+}
+
+.slot_listing_header {
+	background-color: #0097D9;
+	padding: 5px;
+}
+
+.slot_listing_header li {
+	color: white;
+	font-weight: bold;
+	list-style-type: square;
+}
+
+li span {
+	position: relative;
+	left: -10px;
+}
+
+table, td, th {
+	border: 1px solid;
+	border-color: #515151;
+}
+
+table {
+	width: 100%;
+}
+
+th {
+	background-color: #FF7962;
+	border-bottom: 5px solid;
+	border-color: #515151;
+}
+
+td {
+	width: 10%;
+}
+  
+table {
+	width: 100%;
+	border-collapse: collapse;
+	border-color: #515151;
 }
 
 
