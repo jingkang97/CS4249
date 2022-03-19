@@ -26,10 +26,6 @@
                         <div class="unavail-icon"></div>
                         Not available
                     </div>
-                    <div>
-                        <div class="selected-icon"></div>
-                        Selected
-                    </div>
                 </div>
             </div>
         </div>
@@ -205,10 +201,9 @@
         dateChanged: (currentDate, events) => {
                 const events_display = document.querySelector('.events-display');
                 const date = currentDate.toDateString();
-
-                let events_html = '';
-
                 document.getElementById('selected-date').innerHTML = date;
+
+                let events_html = '';                
                 events.forEach(event => {
                     const sessionNum = event.session.substring("Session ".length);
                     const key = date + sessionNum;
