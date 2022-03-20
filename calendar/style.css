@@ -236,6 +236,13 @@ body {
     margin-right: 5px; 
 }
 
+.total-cost {
+    font-size: 18px;
+    margin: 10px;
+    font-weight: bold;
+    color: #2869A5;
+}
+
 /****************** Confirmation html elements *****************/
 
 .confirm-box {

@@ -41,6 +41,9 @@
             <div class="selectedSlots"></div>
         </div>
     </div>
+    <div class="row">
+        <div class="cost"></div>
+    </div>
     <div class="button-container" onClick="clickSubmitHandler()">
         <button class="submit-button">Submit</button>
     </div>
@@ -260,9 +263,13 @@
                     </div>
                 `
             }
+            const numOfSelectedSlots = Object.values(selectedSessions).length;
 
             // display html
             document.querySelector(".selectedSlots").innerHTML = allSelectedSlotsHtml;
+            document.querySelector(".cost").innerHTML = 
+                `<p>Total cost: $20 x ` + numOfSelectedSlots 
+                + ` = ` + 20 * numOfSelectedSlots;
         }
 
         function clickSubmitHandler() {
@@ -274,6 +281,8 @@
             } else {
                 // add to sessionstorage as string
                 sessionStorage.setItem('selectedSessions', JSON.stringify(selectedSessions));
+                sessionStorage.setItem('totalCost', 20 * Object.values(selectedSessions).length);
+
                 // redirect to confirmation page
                 location.href = 'confirmation.html';
             }

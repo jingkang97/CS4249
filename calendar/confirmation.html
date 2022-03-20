@@ -14,6 +14,7 @@
             <div class="confirm-box">
                 <div id="message"></div>
                 <div id="confirmed-slots"></div>
+                <div class="total-cost"></div>
                 <a href="index.html"><button class="submit-button">View more slots</button></a>
             </div>
         </div>
@@ -23,6 +24,8 @@
 <script>
     // get from sessionstorage as object
     var confirmedSessions = JSON.parse(sessionStorage.getItem('selectedSessions'));
+
+    const cost = sessionStorage.getItem('totalCost');
 
     let allConfirmedSlotsHtml = '';
     for (const value of Object.values(confirmedSessions)) {
@@ -40,5 +43,7 @@
     }
     messageHTML += `:</p>`
     document.getElementById("message").innerHTML = messageHTML;
+
+    document.querySelector('.total-cost').innerHTML = `Total cost: $` + cost;
 
 </script>
