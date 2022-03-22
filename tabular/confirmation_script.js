@@ -4,7 +4,7 @@ const total_row = document.getElementById("total_row");
 
 function createCell(data) {
   let cell = document.createElement("td");
-  cell.setAttribute("style", "font-weight: normal;");
+  cell.setAttribute("style", "font-weight: normal; color: black;");
   cell.innerHTML = data;
   return cell;
 }

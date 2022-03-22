@@ -1,3 +1,8 @@
+if (sessionStorage.getItem('month') === null || sessionStorage.getItem('session') === null || sessionStorage.getItem('day') === null) {
+    alert('Invalid selection. Please select at least 1 value for Month, Session, and Day.')
+    document.location.href = "index.html"
+}
+
 const selected_months = JSON.parse(sessionStorage.getItem('month'))
 const selected_months_string = () => {
     var string = ''
@@ -38,7 +43,7 @@ const selected_days_string = () => {
     //     return string
     // }
     const keys = Object.keys(selected_days)
-    for (var i = 0; i < keys.length - 1; i++) {
+    for (var i = 0; i < 7; i++) {
         if (selected_days[keys[i]]) {
             string += keys[i][0].toUpperCase() + keys[i].substring(1) + ', '
         }
@@ -70,11 +75,12 @@ function createSessionRow(date, day) {
     return row
 }
 
-const session_timings = ["", "08:30", "09:30", "10:30", "11:30", "12:30", "13:30", "14:30", "15:30", "16:30", "17:30", "18:30", "19:30", "20:30", "21:30", "22:30"]
+const session_timings = ["", "08:30", "09:30", "10:30", "11:30", "12:30", "13:30", "14:30", "15:30", "16:30", "17:30", "18:30", "19:30", "20:30", "21:30", "22:30", "23:30", "00:30"]
 
 function createDescription(date, day, session) {
     let description = document.createElement('div')
     description.setAttribute('class', 'session_description')
+    let span_container = document.createElement('span')
 
     let date_info = document.createElement('div')
     date_info.setAttribute('id', 'session_info')
@@ -106,9 +112,10 @@ function createDescription(date, day, session) {
     venue_info.appendChild(venue_label)
     venue_info.appendChild(venue_value)
 
-    description.appendChild(date_info)
-    description.appendChild(session_info)
-    description.appendChild(venue_info)
+    span_container.appendChild(date_info)
+    span_container.appendChild(session_info)
+    span_container.appendChild(venue_info)
+    description.appendChild(span_container)
     return description
 }
 
@@ -148,7 +155,7 @@ for (i in selected_months) {
                 let day_string = days[day].charAt(0).toUpperCase() + days[day].slice(1)
                 let date_string = session_date.toLocaleString('en-GB').substring(0,10)
                 let session_row = createSessionRow(date_string, day_string)
-                for (let j = 1; j <= 14; j++) {
+                for (let j = 1; j <= 16; j++) {
                     if (selected_sessions[j]) {
                         let session_cell = document.createElement('td')
                         session_cell.setAttribute('class', 'session_cell')
@@ -165,12 +172,12 @@ for (i in selected_months) {
                         session_row.appendChild(session_cell)
                     }
                 }
-                for (let j = 15; j <= 16; j++) {
-                    if (selected_sessions[j]) {
-                        let session_cell = document.createElement('td')
-                        session_row.appendChild(session_cell)
-                    }
-                }
+                // for (let j = 15; j <= 16; j++) {
+                //     if (selected_sessions[j]) {
+                //         let session_cell = document.createElement('td')
+                //         session_row.appendChild(session_cell)
+                //     }
+                // }
                 slots_table.appendChild(session_row)
             }
         })
@@ -178,7 +185,7 @@ for (i in selected_months) {
 }
 
 if (slots_table.rows.length <= 1) {
-    alert('No slots found that fits your selection! Please click try again and reselect.')
+    alert('No slots found that fits your selection! Please click try again with a different selection.')
     document.location.href = "index.html"
 }
 
