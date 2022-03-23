@@ -63,6 +63,16 @@ a {
   flex-direction: row;
   justify-content: flex-end;
   font-weight: bold;
+  min-width: 90px;
+  margin-right: 10px;
+  color: #2869a5;
+}
+
+.slot_info_label {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+  font-weight: bold;
   min-width: 50px;
   margin-right: 10px;
   color: #2869a5;
@@ -91,8 +101,7 @@ table, td, th {
 
 table {
   width: 100%;
-  table-layout: fixed;
-  width: 100%;
+  /* table-layout: fixed; */
   border-collapse: collapse;
   border-color: #2869A5;
 }

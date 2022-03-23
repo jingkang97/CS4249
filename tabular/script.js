@@ -83,7 +83,14 @@ var cbs = document.querySelectorAll('[type="checkbox"]');
         console.log(this.checked)
         if (this.id in month_ids) {
             month_ids[this.id] = this.checked
-            sessionStorage.setItem('month', JSON.stringify(month_ids))
+            for (month in month_ids) {
+                if (month_ids[month]) {
+                    console.log('hhhh' + month)
+                    sessionStorage.setItem('month', JSON.stringify(month_ids))
+                    return
+                }
+            }
+            sessionStorage.removeItem('month')
             console.log(sessionStorage.getItem('month'))
         } else if (this.id in session_ids) {
             session_ids[this.id] = this.checked
@@ -98,13 +105,21 @@ var cbs = document.querySelectorAll('[type="checkbox"]');
                 session_ids[i] = this.checked
                 document.getElementById(i).checked = this.checked
             }
-            sessionStorage.setItem('session', JSON.stringify(session_ids))
+            if (this.checked) {
+                sessionStorage.setItem('session', JSON.stringify(session_ids))
+            } else {
+                sessionStorage.removeItem('session')
+            }
         } else if (this.id == 'alldays') {
             for (i in day_ids) {
                 day_ids[i] = this.checked
                 document.getElementById(i).checked = this.checked
             }
-            sessionStorage.setItem('day', JSON.stringify(day_ids))
+            if (this.checked) {
+                sessionStorage.setItem('day', JSON.stringify(day_ids))
+            } else {
+                sessionStorage.removeItem('day')
+            }
         }
     });
 });
