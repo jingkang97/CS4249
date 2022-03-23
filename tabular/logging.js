@@ -112,17 +112,19 @@ function getUniqueId() {
 
 // Log the given event.
 function logEvent(event, customName, customInfo) {
-	
-	console.log('event', event, 'customName', customName, 'customInfo', customInfo);
-	
-  // var time = (new Date).getTime();
+  
+ console.log('event', event, 'customName', customName, 'customInfo', customInfo);
+  
   var time = (new Date).toString();
+  var path = window.location.pathname;
+  var page = path.split("/").pop();
+  var retries = sessionStorage.getItem("retries")
   var eventName = customName || event.type;
   // By default, monitor some global state on every event.
   var infoObj = GLOBAL_STATE_TO_LOG();
   // And monitor a few interesting fields from the event, if present.
   for (var key in EVENT_PROPERTIES_TO_LOG) {
-	if (event && key in event) {
+ if (event && key in event) {
       infoObj[key] = event[key];
     }
   }
@@ -136,10 +138,11 @@ function logEvent(event, customName, customInfo) {
   var state = location.hash;
 
   if (ENABLE_CONSOLE_LOGGING) {
-    console.log(uid, time, eventName, target, info, state, LOG_VERSION);
+    // info is the x and y, page is filename, eventName is click, etc, target not sure
+    console.log(uid, time, eventName, target, info, page, retries);
   }
   if (ENABLE_NETWORK_LOGGING) {
-    sendNetworkLog(uid, time, eventName, target, info, state, LOG_VERSION);
+    sendNetworkLog(uid, time, eventName, target, info, page, retries);
   }
 }
 
@@ -150,7 +153,7 @@ if (ENABLE_NETWORK_LOGGING) {
 
 // module pattern to allow some key functions to be "public"
 return {
-	logEvent
+ logEvent
 };
 
 }());
@@ -183,44 +186,23 @@ return {
 // submits to the google form at this URL:
 // docs.google.com/forms/d/e/1FAIpQLSejDsGuUEDvo5Pe_Mxlulbjbno5RouK7S--9DTh_yVShM8ULw/viewform
 // 
-// function sendNetworkLog(
-//     uid,
-//     time,
-//     eventname,
-//     target) {
-//   var formid = "e/1FAIpQLScsc_rNrEQpVKZf7kLSNaXHr2ZY8fpCWI0qm28nAO1xGzZG9Q";
-//   var data = {
-//     "entry.1928232195": uid,
-//     "entry.826636780": time,
-//     "entry.1216785574": eventname,
-//     "entry.240218909": target
-//   };
-//   var params = [];
-//   for (key in data) {
-//     params.push(key + "=" + encodeURIComponent(data[key]));
-//   }
-//   // Submit the form using an image to avoid CORS warnings; warning may still happen, but log will be sent. Go check result in Google Form
-//   (new Image).src = "https://docs.google.com/forms/d/" + formid +
-//      "/formResponse?" + params.join("&");
-// }
-
 function sendNetworkLog(
     uid,
     time,
-    eventName,
+    eventname,
     target,
     info,
-    state,
-    log_version) {
-  var formid = "e/1FAIpQLScblldacOf3-BnDYM1FlVEL60PHs_x8_2yoqwLNVqmNarzX7A";
+    page,
+    retries) {
+  var formid = "e/1FAIpQLSe8yewpMUaAnTZNac7TN06pDN-FNx-zF7pFzH157PHqfYhNFw";
   var data = {
-    "entry.1213174370": uid,
-    "entry.1557365071": time,
-    "entry.2063334899": eventName,
-    "entry.787942568": target,
-    "entry.251233848": info,
-    "entry.94462225": state,
-    "entry.1473081078": log_version
+    "entry.85448220": uid,
+    "entry.2060888453": time,
+    "entry.198434459": eventname,
+    "entry.1489605823": target,
+    "entry.194930874": info,
+    "entry.1631208694": page,
+    "entry.1666937607": retries
   };
   var params = [];
   for (key in data) {
@@ -230,3 +212,31 @@ function sendNetworkLog(
   (new Image).src = "https://docs.google.com/forms/d/" + formid +
      "/formResponse?" + params.join("&");
 }
+
+
+// function sendNetworkLog(
+//     uid,
+//     time,
+//     eventName,
+//     target,
+//     info,
+//     state,
+//     log_version) {
+//   var formid = "e/1FAIpQLScblldacOf3-BnDYM1FlVEL60PHs_x8_2yoqwLNVqmNarzX7A";
+//   var data = {
+//     "entry.1213174370": uid,
+//     "entry.1557365071": time,
+//     "entry.2063334899": eventName,
+//     "entry.787942568": target,
+//     "entry.251233848": info,
+//     "entry.94462225": state,
+//     "entry.1473081078": log_version
+//   };
+//   var params = [];
+//   for (key in data) {
+//     params.push(key + "=" + encodeURIComponent(data[key]));
+//   }
+//   // Submit the form using an image to avoid CORS warnings; warning may still happen, but log will be sent. Go check result in Google Form
+//   (new Image).src = "https://docs.google.com/forms/d/" + formid +
+//      "/formResponse?" + params.join("&");
+// }
