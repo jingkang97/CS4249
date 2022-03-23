@@ -1,5 +1,7 @@
 // script to render calendar, avail timings and selected slots
 
+const costPerSession = 13.91;
+
 // create avail dates from mar 2022 to feb 2023 for the days 5/12/19/26, with all 15 slots
 const sessNumToTime = {
     1: '08:30 AM - 09:30 AM',
@@ -128,9 +130,7 @@ function clickAvailTimeSlotHandler(element) {
 
     // display html
     document.querySelector(".selectedSlots").innerHTML = allSelectedSlotsHtml;
-    document.querySelector(".cost").innerHTML = 
-        `<p>Total cost: $20 x ` + numOfSelectedSlots 
-        + ` = ` + 20 * numOfSelectedSlots;
+    document.getElementsByClassName("total-sum")[0].innerText = (numOfSelectedSlots * costPerSession).toFixed(2);
 }
 
 function clickSubmitHandler() {
