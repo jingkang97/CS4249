@@ -402,8 +402,9 @@ function sendLoggedData() {
     const totalTime = 0; // TODO
     const numClicks = sessionStorage.getItem("numClicks");
     const numTries = sessionStorage.getItem("numTries");
+    const taskId = sessionStorage.getItem("task_id");
     const technique = "calendar";
-    sendNetworkLog(uid, technique, totalTime, numClicks, numTries);
+    sendNetworkLog(uid, technique, taskId, totalTime, numClicks, numTries);
 }
 
 
@@ -435,12 +436,13 @@ function sendLoggedData() {
 // submits to the google form at this URL:
 // docs.google.com/forms/d/e/1vCd7k3jyrWdQVimFdpvjezBVvO7v9TcWnA0jPYgaZZc
 // 
-function sendNetworkLog(uid, technique, totalTime, numClicks, numTries) {
+function sendNetworkLog(uid, technique, taskId, totalTime, numClicks, numTries) {
     console.log("SENDING NETWORK LOG", "time", totalTime, "clicks", numClicks, "tries", numTries);
     var formid = "1FAIpQLSf-H0XExwzcCAFtxS1yQi_6q1yzBt2qsmitQUrAiep_oGNphA";
     var data = {
         "entry.291160548": uid,
         "entry.1369922782": technique,
+        "entry.1199872660": taskId,
         "entry.2053817221": totalTime,
         "entry.555222347": numTries,
         "entry.444426279": numClicks,
