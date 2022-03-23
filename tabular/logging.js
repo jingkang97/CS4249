@@ -115,7 +115,8 @@ function logEvent(event, customName, customInfo) {
 	
 	console.log('event', event, 'customName', customName, 'customInfo', customInfo);
 	
-  var time = (new Date).getTime();
+  // var time = (new Date).getTime();
+  var time = (new Date).toString();
   var eventName = customName || event.type;
   // By default, monitor some global state on every event.
   var infoObj = GLOBAL_STATE_TO_LOG();
@@ -182,44 +183,17 @@ return {
 // submits to the google form at this URL:
 // docs.google.com/forms/d/e/1FAIpQLSejDsGuUEDvo5Pe_Mxlulbjbno5RouK7S--9DTh_yVShM8ULw/viewform
 // 
-function sendNetworkLog(
-    uid,
-    time,
-    eventname,
-    target) {
-  var formid = "e/1FAIpQLScsc_rNrEQpVKZf7kLSNaXHr2ZY8fpCWI0qm28nAO1xGzZG9Q";
-  var data = {
-    "entry.1928232195": uid,
-    "entry.826636780": time,
-    "entry.1216785574": eventname,
-    "entry.240218909": target
-  };
-  var params = [];
-  for (key in data) {
-    params.push(key + "=" + encodeURIComponent(data[key]));
-  }
-  // Submit the form using an image to avoid CORS warnings; warning may still happen, but log will be sent. Go check result in Google Form
-  (new Image).src = "https://docs.google.com/forms/d/" + formid +
-     "/formResponse?" + params.join("&");
-}
-
 // function sendNetworkLog(
 //     uid,
 //     time,
-//     eventName,
-//     target,
-//     info,
-//     state,
-//     log_version) {
-//   var formid = "e/1FAIpQLScblldacOf3-BnDYM1FlVEL60PHs_x8_2yoqwLNVqmNarzX7A";
+//     eventname,
+//     target) {
+//   var formid = "e/1FAIpQLScsc_rNrEQpVKZf7kLSNaXHr2ZY8fpCWI0qm28nAO1xGzZG9Q";
 //   var data = {
-//     "entry.1213174370": uid,
-//     "entry.1557365071": time,
-//     "entry.2063334899": eventName,
-//     "entry.787942568": target,
-//     "entry.251233848": info,
-//     "entry.94462225": state,
-//     "entry.1473081078": log_version
+//     "entry.1928232195": uid,
+//     "entry.826636780": time,
+//     "entry.1216785574": eventname,
+//     "entry.240218909": target
 //   };
 //   var params = [];
 //   for (key in data) {
@@ -229,3 +203,30 @@ function sendNetworkLog(
 //   (new Image).src = "https://docs.google.com/forms/d/" + formid +
 //      "/formResponse?" + params.join("&");
 // }
+
+function sendNetworkLog(
+    uid,
+    time,
+    eventName,
+    target,
+    info,
+    state,
+    log_version) {
+  var formid = "e/1FAIpQLScblldacOf3-BnDYM1FlVEL60PHs_x8_2yoqwLNVqmNarzX7A";
+  var data = {
+    "entry.1213174370": uid,
+    "entry.1557365071": time,
+    "entry.2063334899": eventName,
+    "entry.787942568": target,
+    "entry.251233848": info,
+    "entry.94462225": state,
+    "entry.1473081078": log_version
+  };
+  var params = [];
+  for (key in data) {
+    params.push(key + "=" + encodeURIComponent(data[key]));
+  }
+  // Submit the form using an image to avoid CORS warnings; warning may still happen, but log will be sent. Go check result in Google Form
+  (new Image).src = "https://docs.google.com/forms/d/" + formid +
+     "/formResponse?" + params.join("&");
+}
