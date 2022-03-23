@@ -2,6 +2,8 @@
 
 const costPerSession = 13.91;
 
+console.log("num ", sessionStorage.getItem("numTries"));
+
 // create avail dates from mar 2022 to feb 2023 for the days 5/12/19/26, with all 15 slots
 const sessNumToTime = {
     1: '08:30 AM - 09:30 AM',

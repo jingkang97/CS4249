@@ -342,10 +342,123 @@ function checkSelection() {
       break;
   }
   if (isCorrect) {
-    // redirect to confirmation page
-    location.href = "confirmation.html";
+    // send logged data to forms
+    sendLoggedData();
+
+    // redirect to confirmation page TODO
+    // location.href = "confirmation.html"; 
   } else {
+    var currTries = parseInt(sessionStorage.getItem("numTries"));
+    if (!currTries) {
+        currTries = 0;
+    }
+    // increment num Tries
+    sessionStorage.setItem("numTries", currTries + 1);
+    console.log(sessionStorage.getItem("numTries"));
+    sessionStorage.removeItem("selectedSessions");
+
+    // display fail html
     location.href = "fail.html";
-    sessionStorage.clear();
   }
+}
+
+// TODO: should be called for each new task
+function changeTaskIdAndResetStorage(id) {
+    sessionStorage.clear();
+    sessionStorage.setItem("task_id", id);
+}
+
+// =========== Logging helper functions =========== 
+
+// A persistent unique id for the user.
+var uid = getUniqueId();
+
+// Parse user agent string by looking for recognized substring.
+function findFirstString(str, choices) {
+    for (var j = 0; j < choices.length; j++) {
+      if (str.indexOf(choices[j]) >= 0) {
+        return choices[j];
+      }
+    }
+    return '?';
+  }
+  
+  // Generates or remembers a somewhat-unique ID with distilled user-agent info.
+  function getUniqueId() {
+      if (!('uid' in localStorage)) {
+          var browser = findFirstString(navigator.userAgent, [
+          'Seamonkey', 'Firefox', 'Chromium', 'Chrome', 'Safari', 'OPR', 'Opera',
+          'Edge', 'MSIE', 'Blink', 'Webkit', 'Gecko', 'Trident', 'Mozilla']);
+          var os = findFirstString(navigator.userAgent, [
+          'Android', 'iOS', 'Symbian', 'Blackberry', 'Windows Phone', 'Windows',
+          'OS X', 'Linux', 'iOS', 'CrOS']).replace(/ /g, '_');
+          var unique = ('' + Math.random()).substr(2);
+          localStorage['uid'] = os + '-' + browser + '-' + unique;
+      }
+      return localStorage['uid'];
+  }
+
+function sendLoggedData() {
+    const totalTime = 0; // TODO
+    const numClicks = sessionStorage.getItem("numClicks");
+    const numTries = sessionStorage.getItem("numTries");
+    const technique = "calendar";
+    sendNetworkLog(uid, technique, totalTime, numClicks, numTries);
+}
+
+
+/////////////////////////////////////////////////////////////////////////////
+// CHANGE ME:
+// ** Replace the function below by substituting your own google form. **
+/////////////////////////////////////////////////////////////////////////////
+//
+// 1. Create a Google form called "Network Log" at forms.google.com.
+// 2. Set it up to have several "short answer" questions; here we assume
+//    seven questions: uid, time, eventName, target, info, state, version.
+// 3. Run googlesender.py to make a javascript
+//    function that submits records directly to the form.
+// 4. Put that function in here, and replace the current sendNetworkLog
+//    so that your version is called to log events to your form.
+//
+// For example, the following code was written as follows:
+// python googlesender.py https://docs.google.com/forms/d/e/1.../viewform
+//
+// This preocess changes the ids below to direct your data into your own
+// form and spreadsheet. The formid must be customized, and also the form
+// field names such as "entry.1291686978" must be matched to your form.
+// (The numerical field names for a Google form can be found by inspecting
+// the form input fields.) This can be done manually, but since this is an
+// error-prone process, it can be easier to use googlesender.py.
+//
+/////////////////////////////////////////////////////////////////////////////
+// Network Log submission function
+// submits to the google form at this URL:
+// docs.google.com/forms/d/e/1vCd7k3jyrWdQVimFdpvjezBVvO7v9TcWnA0jPYgaZZc
+// 
+function sendNetworkLog(uid, technique, totalTime, numClicks, numTries) {
+    console.log("SENDING NETWORK LOG", "time", totalTime, "clicks", numClicks, "tries", numTries);
+    var formid = "1FAIpQLSf-H0XExwzcCAFtxS1yQi_6q1yzBt2qsmitQUrAiep_oGNphA";
+    var data = {
+        "entry.291160548": uid,
+        "entry.1369922782": technique,
+        "entry.2053817221": totalTime,
+        "entry.555222347": numTries,
+        "entry.444426279": numClicks,
+    };
+    var params = [];
+    for (key in data) {
+        params.push(key + "=" + encodeURIComponent(data[key]));
+    }
+
+    const destLink = "https://docs.google.com/forms/d/e/" + formid + "/formResponse?&" + params.join("&") + "&submit=SUBMIT";
+    // fetch(destLink, {
+    //     origin: "*",
+    //     method: "POST",
+    //     headers: {'Content-Type': 'application/json'}, 
+    //     body: JSON.stringify(data)
+    //   }).then(res => {
+    //     console.log("Request complete! response:", res);
+    // })
+
+    (new Image).src = destLink;
 }
