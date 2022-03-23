@@ -1,44 +1,60 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <link rel="stylesheet" type="text/css" href="style.css">
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <link rel="stylesheet" type="text/css" href="style.css" />
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Slot Selection</title>
-</head>
-<body>
-    <h3 style="color: #001251; text-decoration: underline; line-height: 0;">Booking For 3A Driving Simulator Practical Training</h3>
-    <p style="color: #010F40; line-height: 0;">Please check the slot you want to book.</p>
-    <div id="selected_info">
-        <div class="info_label">Month: </div> <span id="selected_month"></span>
-    </div>
-    <div id="selected_info">
-        <div class="info_label">Session: </div> <span id="selected_session"></span>
-    </div>
-    <div id="selected_info">
-        <div class="info_label">Day: </div> <span id="selected_day"></span>
-    </div>
-    <!-- <div id="selected_info">
-        <div class="info_label">Group: </div> <span>G8035</span>
-    </div>
-    <div id="selected_info">
-        <div class="info_label">Car Model: </div> <span>ATC</span>
-    </div> -->
+  </head>
+  <body>
+    <div class="container">
+      <h1>Driving Simulator Booking Selection</h1>
+      <div class="selected-info-box">
+        <span>
+          <div id="selected_info">
+            <div class="info_label">Month:</div>
+            <span id="selected_month"></span>
+          </div>
+          <div id="selected_info">
+            <div class="info_label">Session:</div>
+            <span id="selected_session"></span>
+          </div>
+          <div id="selected_info" style="margin-bottom: 0px">
+            <div class="info_label">Day:</div>
+            <span id="selected_day"></span>
+          </div>
+        </span>
+      </div>
 
-    <div id="slot_listing">
-        <div class="slot_listing_header"><li><span>Slots Listing</span></li></div>
-        <p style="color: #0051b4; font-size: 14px;">Below are the only slots that are available based on your schedule seleciton. Please tick to select the date and then click "<b>Submit</b>". Click "<b><< Back</b>" to select other schedule.</p>
+      <div class="sub_container" style="margin-top: 30px">
+        <p style="color: #2869a5">
+          Below are the only slots that are available based on your schedule
+          selection. Please check the slot you want to book and then click
+          "<b>Submit</b>".
+        </p>
+        <p style="color: #2869a5">
+          Click "<b><< Back</b>" to select other schedule.
+        </p>
+      </div>
 
+      <div id="slot_listing" style="margin: 10px 0px 40px 0px">
         <table id="slots"></table>
+      </div>
 
+      <div class="button-container">
+        <button style="margin-left: 0px">
+          <a href="index.html">&lt;&lt; Back</a>
+        </button>
+        <button style="margin-left: 2px" id="submit">
+          <a href="confirmation.html">Submit</a>
+        </button>
+      </div>
     </div>
-
-    <button style="margin-left: 0px;"><a href="index.html">&lt;&lt; Back</a></button>
-    <button style="margin-left: 2px;" id="submit"><a href="confirmation.html">Submit</a></button>
 
     <!-- <span>
     <div class="session_description">
+        <span>
         <div id="session_info">
             <div class="info_label">Date: </div> <span>02/03/2022 (Wed)</span>
         </div>
@@ -48,28 +64,29 @@
         <div id="session_info">
             <div class="info_label">Venue: </div> <span>BBDC</span>
         </div>
+        </span>
     </div>
     </span> -->
 
     <script src="selection_script.js"></script>
-    <script src="logging.js"></script>
+    <!-- <script src="logging.js"></script> -->
     <script>
-      function sendCustomEvent() {
-          console.log('sendCustomEvent');
-          document.dispatchEvent(new CustomEvent('myevent', { detail: {
-              eventName: 'myeventName',
-              info: {'key1': 'val1', 'key2': 'val2'}
-          }}));
-      }
-      document.addEventListener('myevent', loggingjs.logEvent, true);
+      //   function sendCustomEvent() {
+      //       console.log('sendCustomEvent');
+      //       document.dispatchEvent(new CustomEvent('myevent', { detail: {
+      //           eventName: 'myeventName',
+      //           info: {'key1': 'val1', 'key2': 'val2'}
+      //       }}));
+      //   }
+      //   document.addEventListener('myevent', loggingjs.logEvent, true);
 
-      function sendCustomEvent2() {
-          console.log('sendCustomEvent2');
-          loggingjs.logEvent(null, 'myevent2', {
-              eventName: 'myeventName',
-              info: {'key1': 'val1', 'key2': 'val2'}
-          });
-      }
+      //   function sendCustomEvent2() {
+      //       console.log('sendCustomEvent2');
+      //       loggingjs.logEvent(null, 'myevent2', {
+      //           eventName: 'myeventName',
+      //           info: {'key1': 'val1', 'key2': 'val2'}
+      //       });
+      //   }
     </script>
-</body>
+  </body>
 </html>

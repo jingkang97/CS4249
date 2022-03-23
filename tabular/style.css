@@ -1,5 +1,5 @@
 html{
-	font-family: Arial, sans-serif;
+	font-family: Arial;
 }
 div{
 	margin-bottom: 5px;
@@ -10,28 +10,42 @@ input{
 button{
 	margin-top: 20px;
 	margin-left: 20px;
-	background: #0766CF;
+	/* background: #0766CF;
 	color: white;
 	border: black solid 1px;
-	font-weight: bold;
+	font-weight: bold; */
+  padding: 10px 30px;
+  flex: right;
+  font: Arial;
+  font-size: 1em;
+  font-weight: bold;
+  background-color: #4F98DB;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  filter: drop-shadow(0 2px 5px #96aab4);
 }
 button:hover{
-	background: #11DCFF;
+	/* background: #11DCFF; */
+  cursor: pointer;
+  background-color: #2869A5;
 }
 .header{
 	display: flex;
 	flex-direction: row;
 	justify-content: flex-end;
-	font-weight: bo;
+	font-weight: bold;
 	min-width: 90px;
+  color: #2869a5;
 }
 #normalsession, #monthrows, #normaldays, #venue, #selected_info, #confirmation_info {
 	display: flex;
 }
-#months, #session, #days{
+#months, #session, #days, #venue{
 	display: flex;
 	flex-direction: row;
 	margin-bottom: 30px;
+  width: 100%;
 }
 .monthcolumn {
   display: flex;
@@ -49,8 +63,9 @@ a {
   flex-direction: row;
   justify-content: flex-end;
   font-weight: bold;
-  min-width: 90px;
+  min-width: 50px;
   margin-right: 10px;
+  color: #2869a5;
 }
 
 .slot_listing_header {
@@ -71,52 +86,62 @@ li span {
 
 table, td, th {
   border: 1px solid;
-  border-color: #515151;
+  border-color: #2869A5;
 }
 
 table {
   width: 100%;
-  table-layout: fixed
+  table-layout: fixed;
+  width: 100%;
+  border-collapse: collapse;
+  border-color: #2869A5;
 }
 
 th {
-  background-color: #ff7962;
+  background-color: #4F98DB;
+  color: white;
   border-bottom: 5px solid;
-  border-color: #515151;
+  border-color: #2869A5;
   text-align: center;
+  height: 30px;
 }
 
 td {
 	text-align: center;
 	font-weight: bold;
 	vertical-align: middle;
+  height: 45px;
+  color: #2869a5
 }
 
 td input {
 	margin-left: 3px;
 }
 
-table {
-  width: 100%;
-  border-collapse: collapse;
-  border-color: #515151;
+td span {
+  color: black;
 }
 
 #session_info {
 	display: flex;
+  flex-direction: row;
+  width: 100%;
 	margin-top: 2.5px;
 	margin-bottom: -2.5px;
 	color: #00104E;
 }
 
 .session_description {
-	width: 300px;
-  	border: 10px solid #C7E2F3;
-	outline: 1px solid #004E87;
-	padding-left: 10px;
-	padding-right: 10px;
+	width: 200px;
+	outline: 2px solid #2869A5;
+  border-radius: 5px;
+  padding: 10px 10px;
 	font-size: 12px;
 	background-color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
 }
 
 .session_cell {
@@ -131,8 +156,8 @@ table {
 	visibility: hidden;
 	position: absolute;
 	bottom: 125%;
-	left: 50%;
-	margin-left: -60px;
+	right: 50%;
+	margin-right: -60px;
 	opacity: 0;
 	/* transition: opacity 0.3s; */
 }
@@ -142,11 +167,11 @@ table {
 	opacity: 1;  
 }
 
-#confirmation-table {
+/* #confirmation-table {
   border-color: #000000;
   border: 1px solid;
   text-align: right;
-}
+} */
 
 #header th {
   background-color: #cfcfcf;
@@ -178,15 +203,57 @@ table {
 .value {
   padding-left: 10px;
   text-align: left;
-  color: maroon;
+  color: black;
   border: none;
 }
 
 .button-container {
-  width: fit-content;
-  margin-left: 200px;
+  /* width: fit-content;
+  margin-left: 200px; */
+  display: flex;
+  justify-content: right;
+  gap: 20px;
 }
 
 .button-container button {
   margin: 0;
+}
+
+.container { 
+  margin: auto;
+  padding: 0px 50px;
+}
+
+.sub_container {
+  background-color: gainsboro;
+  /* margin: 0 0 0 30px; */
+  padding: 10px 30px 10px 30px;
+  border-radius: 10px;
+  /* width: 50%; */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.sub_container p {
+  line-height: 0px;
+}
+
+.tabular_selection {
+  padding: 20px 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.selected-info-box {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  border: 2px solid lightgray;
+  border-radius: 10px;
+  padding: 20px 20px 20px 20px;
 }
