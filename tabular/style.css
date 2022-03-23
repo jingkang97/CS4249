@@ -1,5 +1,5 @@
 html{
-	font-family: Arial, sans-serif;
+	font-family: Arial;
 }
 div{
 	margin-bottom: 5px;
@@ -10,29 +10,259 @@ input{
 button{
 	margin-top: 20px;
 	margin-left: 20px;
-	background: #0766CF;
+	/* background: #0766CF;
 	color: white;
 	border: black solid 1px;
-	font-weight: bold;
+	font-weight: bold; */
+  padding: 10px 30px;
+  flex: right;
+  font: Arial;
+  font-size: 1em;
+  font-weight: bold;
+  background-color: #4F98DB;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  filter: drop-shadow(0 2px 5px #96aab4);
 }
 button:hover{
-	background: #11DCFF;
+	/* background: #11DCFF; */
+  cursor: pointer;
+  background-color: #2869A5;
 }
-
-#months{
-	margin-bottom: 50px;
-}
-#sessionrows, #monthrows{
+.header{
 	display: flex;
+	flex-direction: row;
+	justify-content: flex-end;
+	font-weight: bold;
+	min-width: 90px;
+  color: #2869a5;
+}
+#normalsession, #monthrows, #normaldays, #venue, #selected_info, #confirmation_info {
+	display: flex;
+}
+#months, #session, #days, #venue{
+	display: flex;
+	flex-direction: row;
+	margin-bottom: 30px;
+  width: 100%;
 }
 .monthcolumn {
-	display: flex;
-	flex-direction: column;
-	margin-right: 50px;
+  display: flex;
+  flex-direction: column;
+  margin-right: 50px;
 }
 
+a {
+  color: white;
+  text-decoration: none;
+}
 
+.info_label {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+  font-weight: bold;
+  min-width: 90px;
+  margin-right: 10px;
+  color: #2869a5;
+}
 
+.slot_info_label {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+  font-weight: bold;
+  min-width: 50px;
+  margin-right: 10px;
+  color: #2869a5;
+}
 
+.slot_listing_header {
+  background-color: #0097d9;
+  padding: 5px;
+}
 
+.slot_listing_header li {
+  color: white;
+  font-weight: bold;
+  list-style-type: square;
+}
 
+li span {
+  position: relative;
+  left: -10px;
+}
+
+table, td, th {
+  border: 1px solid;
+  border-color: #2869A5;
+}
+
+table {
+  width: 100%;
+  /* table-layout: fixed; */
+  border-collapse: collapse;
+  border-color: #2869A5;
+}
+
+th {
+  background-color: #4F98DB;
+  color: white;
+  border-bottom: 5px solid;
+  border-color: #2869A5;
+  text-align: center;
+  height: 30px;
+}
+
+td {
+	text-align: center;
+	font-weight: bold;
+	vertical-align: middle;
+  height: 45px;
+  color: #2869a5
+}
+
+td input {
+	margin-left: 3px;
+}
+
+td span {
+  color: black;
+}
+
+#session_info {
+	display: flex;
+  flex-direction: row;
+  width: 100%;
+	margin-top: 2.5px;
+	margin-bottom: -2.5px;
+	color: #00104E;
+}
+
+.session_description {
+	width: 200px;
+	outline: 2px solid #2869A5;
+  border-radius: 5px;
+  padding: 10px 10px;
+	font-size: 12px;
+	background-color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.session_cell {
+	position: relative;
+}
+
+.session_cell:hover {
+	background-color: #c5dff0;
+}
+
+.session_cell .hover_description {
+	visibility: hidden;
+	position: absolute;
+	bottom: 125%;
+	right: 50%;
+	margin-right: -60px;
+	opacity: 0;
+	/* transition: opacity 0.3s; */
+}
+  
+.session_cell:hover .hover_description {
+	visibility: visible;
+	opacity: 1;  
+}
+
+/* #confirmation-table {
+  border-color: #000000;
+  border: 1px solid;
+  text-align: right;
+} */
+
+#header th {
+  background-color: #cfcfcf;
+  border: 1px solid #000000;
+  padding: 3px;
+}
+
+.confirmation-slot td {
+  background-color: white;
+  border: 1px solid #000000;
+  font-weight: 100;
+  padding: 2px;
+}
+
+#confirmation-summary table {
+  width: fit-content;
+  max-width: 350px;
+  margin: 30px 0 30px 0;
+  border: none;
+  font-weight: bold;
+}
+
+.title {
+  text-align: right;
+  border: none;
+  padding: 3px;
+}
+
+.value {
+  padding-left: 10px;
+  text-align: left;
+  color: black;
+  border: none;
+}
+
+.button-container {
+  /* width: fit-content;
+  margin-left: 200px; */
+  display: flex;
+  justify-content: right;
+  gap: 20px;
+}
+
+.button-container button {
+  margin: 0;
+}
+
+.container { 
+  margin: auto;
+  padding: 0px 50px;
+}
+
+.sub_container {
+  background-color: gainsboro;
+  /* margin: 0 0 0 30px; */
+  padding: 10px 30px 10px 30px;
+  border-radius: 10px;
+  /* width: 50%; */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.sub_container p {
+  line-height: 0px;
+}
+
+.tabular_selection {
+  padding: 20px 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.selected-info-box {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  border: 2px solid lightgray;
+  border-radius: 10px;
+  padding: 20px 20px 20px 20px;
+}

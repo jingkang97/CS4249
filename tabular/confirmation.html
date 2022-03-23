@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="stylesheet" type="text/css" href="style.css" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Slot Confirmation</title>
+  </head>
+  <body>
+    <div class="container">
+    <h1>
+      Driving Simulator Booking Confirmation
+    </h1>
+    <div class="sub_container">
+      <p style="color: #2869a5">
+        Below is the schedule you selected, please click "<b>Confirm</b>" to
+        confirm the slot.
+      </p>
+      <p style="color: #2869a5">
+        Click "<b> << Back</b>" if you want to reselect other schedule.
+      </p>
+    </div>
+
+    <div id="confirmation-main" style="margin: 10px 0px 20px 0px">
+      <table>
+        <tr>
+          <th>Training Date</th>
+          <th style="text-align: center">Session</th>
+          <th>Time</th>
+          <th style="text-align: center">Training Venue</th>
+          <th>Session Charge</th>
+          <th>Venue Charge</th>
+        </tr>
+
+        <tr id="total_row">
+          <td colspan="4" style="font-weight: bold; text-align: right; padding-right: 10px;">
+            Total:
+          </td>
+          <td
+            id="total_session_charge"
+            style="color: #2869a5; font-weight: bold"
+          >
+            $0.00
+          </td>
+          <td id="total_venue_charge" style="color: #2869a5; font-weight: bold">
+            $0.00
+          </td>
+        </tr>
+      </table>
+    </div>
+
+    <div id="confirmation-summary">
+      <table style="width: 100%">
+        <!-- <tr>
+          <td class="title">Account ID:</td>
+          <td class="value">424900</td>
+        </tr> -->
+
+        <tr>
+          <td class="title">Total Session Charge:</td>
+          <td id="total_session_charge_value" class="value">$0.00</td>
+        </tr>
+
+        <tr>
+          <td class="title">Total Venue Charge:</td>
+          <td class="value">$0.00</td>
+        </tr>
+
+        <tr>
+          <td class="title">Grand Total:</td>
+          <td id="grand_total_value" class="value">$0.00</td>
+        </tr>
+      </table>
+    </div>
+
+    <div class="button-container">
+      <button><a href="selection.html"><< Back</a></button>
+      <button><a onclick="checkSelection()">Confirm</a></button>
+    </div>
+    </div>
+
+    <script src="confirmation_script.js"></script>
+    <script src="logging.js"></script>
+    <script>
+      // function sendCustomEvent() {
+      //     console.log('sendCustomEvent');
+      //     document.dispatchEvent(new CustomEvent('myevent', { detail: {
+      //         eventName: 'myeventName',
+      //         info: {'key1': 'val1', 'key2': 'val2'}
+      //     }}));
+      // }
+      // document.addEventListener('myevent', loggingjs.logEvent, true);
+
+      // function sendCustomEvent2() {
+      //     console.log('sendCustomEvent2');
+      //     loggingjs.logEvent(null, 'myevent2', {
+      //         eventName: 'myeventName',
+      //         info: {'key1': 'val1', 'key2': 'val2'}
+      //     });
+      // }
+    </script>
+  </body>
+</html>
