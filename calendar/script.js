@@ -344,13 +344,14 @@ function checkSelection() {
   }
   if (isCorrect) {
     // send logged data to forms
-    // sendLoggedData();
+    sendLoggedData();
 
-    // var isComplete = localStorage.hasOwnProperty('loggingComplete');
-    // if (isComplete) {
+    var isComplete = sessionStorage.hasOwnProperty('loggingComplete')
+        && sessionStorage.getItem('loggingComplete');
+    if (isComplete) {
       // redirect to confirmation page TODO
       location.href = "confirmation.html";
-    // }
+    }
 
   } else {
     var currTries = parseInt(sessionStorage.getItem("numTries"));
