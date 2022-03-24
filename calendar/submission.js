@@ -423,7 +423,6 @@ function sendNetworkLog(uid, technique, taskId, totalTime, numClicks, numTries) 
         method: "POST",
         mode: 'no-cors',
       }).then(res => {
-        console.log("Request complete! response:", res);
         // redirect to confirmation page
         location.href = "confirmation.html";
     });
