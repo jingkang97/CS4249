@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<link rel="stylesheet" type="text/css" href="start_styles.css">
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>start</title>
+</head>
+<body>
+	<div id="startDiv">
+		<div>When you click <span class="start">Start</span>, the interface for the task will be revealed.</div>
+		<div>Click <span class="start">Start</span> when you are ready!</div>
+		<a href="task.html" onClick="startTask()"><button>START</button></a>
+	</div>
+    <script>
+        function startTask() {
+            sessionStorage.clear();
+
+            // get id
+            let id;
+            let url = window.location.search.substring(1); //get rid of "?" in querystring
+            let qArray = url.split('&'); //get key-value pairs
+            for (var i = 0; i < qArray.length; i++) 
+            {
+                var pArr = qArray[i].split('='); //split key and value
+                if (pArr[0] == "id") { // get the param 'id' value
+                    id = pArr[1];
+                }
+            }
+
+            // set task id
+            console.log("Task id is: ", id);
+            sessionStorage.setItem("task_id", id);
+
+            // initialise mouse clicks to 0
+            var numClicks = parseInt(sessionStorage.getItem("numClicks"));
+            if (!numClicks) {
+                sessionStorage.setItem("numClicks", 0);
+            }
+
+            // initialise num tries to 0
+            var numTries = parseInt(sessionStorage.getItem("numTries"));
+            if (!numTries) {
+                sessionStorage.setItem("numTries", 0);
+            }
+
+            // set current time (in miliseconds) as start time
+            sessionStorage.setItem("startTime", Date.now());
+        }
+    </script>
+</body>
+</html>
