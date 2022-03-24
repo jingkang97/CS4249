@@ -216,7 +216,7 @@ function checkSelection() {
       var date3 = thirdSelectedSlot.date.split(" ")[2];
       var dates = [date1, date2, date3];
       dates.sort();
-      sessionStorage.setItem('dates', dates);
+      sessionStorage.setItem("dates", dates);
       for (var i = 1; i < 3; i++) {
         if (Math.abs(parseInt(dates[i]) - parseInt(dates[i - 1])) != 7) {
           isCorrect = false;
