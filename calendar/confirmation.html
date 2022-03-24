@@ -49,5 +49,5 @@
     document.querySelector('.total-cost').innerHTML = `Total cost: $` + cost;
 
     console.log("window.parent is:", window.parent, "window.frame is:", window.frames);
-    parent.postMessage("End of Survey", window.parent);
+    parent.postMessage("End of Survey", "*");
 </script>
