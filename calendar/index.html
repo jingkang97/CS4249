@@ -23,8 +23,8 @@
             console.log("reached C");
             for (var i = 0; i < qArray.length; i++) 
             {
-                console.log("reached A");
                 var pArr = qArray[i].split('='); //split key and value
+                console.log("reached A", qArray, pArr);
                 if (pArr[0] == "id") { // get the param 'id' value
                     console.log("reached B");
                     id = pArr[1];
