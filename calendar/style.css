@@ -1,0 +1,294 @@
+.title {
+    justify-content: left;
+}
+
+body {
+    font-family: 'Arial';
+}
+
+.row {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+
+/* Always show scrollbar */
+::-webkit-scrollbar {
+    -webkit-appearance: none;
+    width: 7px;
+}
+
+::-webkit-scrollbar-thumb {
+    border-radius: 4px;
+    background-color: rgba(0, 0, 0, 0.5);
+    box-shadow: 0 0 1px rgba(255, 255, 255, .5);
+}
+
+/* Available timeslots */
+.col {
+    background-color: gainsboro;
+    margin: 0 0 0 30px;
+    padding: 0 30px 20px 30px;
+    border-radius: 10px;
+    width: 50%;
+}
+
+.avail-timeslot {
+    display: inline-block;
+    background-color: white;
+    padding: 5px 20px;
+    margin: 10px 25px;
+    border-radius: 5px;
+    width: 180px;
+    line-height: 5px;
+    text-align: left;
+}
+
+.selected-timeslot {
+    display: inline-block;
+    flex-direction: row;
+    background-color: white;
+    padding: 20px 20px 10px 20px;
+    margin: 10px;
+    border-radius: 5px;
+    width: 185px;
+    line-height: 7px;
+    text-align: left;
+    color: #2869A5;
+}
+
+.avail-timeslot.selected {
+    color: white;
+    background-color: #2869A5;
+}
+
+.events-display .avail-timeslot.selected:hover {
+    color: white;
+    background-color: #0a3358;
+    cursor: pointer;
+}
+
+.events-display {
+    overflow-y: scroll;
+    margin-top: 15px;
+    margin-left: auto;
+    height: 390px;
+    text-align: center;
+}
+
+.event-slot {
+    font-weight: bold;
+}
+
+.events-display div:hover:not(.no-events-text) {
+    background-color: aliceblue;
+    cursor: pointer;
+}
+
+.no-events-text {
+    text-align: center;
+    margin: 50px;
+    line-height: 30px;
+}
+
+.float-container {
+    border: 3px solid #fff;
+    padding: 20px;
+}
+
+.float-child {
+    width: 50%;
+    float: left;
+    padding: 20px;
+}
+
+.lead { 
+    font-size: 1.5rem;
+    font-weight: 300; 
+}
+
+.container { 
+    margin: auto;
+    padding: 0px 50px;
+}
+
+.header {
+    margin: 25px 10px 10px 10px;
+    text-align: center;
+    color: #2869A5;
+}
+
+.sub-header {
+    text-align: center;
+    color: #2869A5;
+}
+
+/* Selected slots */
+
+.selected-slots {
+    position: relative;
+    background-color: #4F98DB;
+    color: white;
+    margin: 30px 0;
+    padding: 0 30px 20px 30px;
+    width: 100%;
+    border-radius: 10px;
+    min-height: 200px;
+}
+
+.selectedSlots {
+    margin-bottom: 50px;
+}
+
+.price {
+    display: flex;
+    position: absolute;
+    bottom: 0px;
+    right: 0px;
+    font-weight: bold;
+    margin: 20px;
+    padding: 5px 30px;
+    border: 1px solid white;
+    border-radius: 3px;
+}
+
+/* Submit Button */
+
+.submit-button {
+    margin: 20px;
+    padding: 10px 30px;
+    flex: right;
+    font: Arial;
+    font-size: 1em;
+    font-weight: bold;
+    background-color: #4F98DB;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    filter: drop-shadow(0 2px 5px #96aab4);
+}
+
+.submit-button:hover {
+    cursor: pointer;
+    background-color: #2869A5;
+}
+
+.button-container {
+    display: flex;
+    justify-content: right;
+}
+
+/* Calendar Bullet Icon */
+
+.color-calendar.glass .calendar__day.calendar__day-event > .calendar__day-bullet {
+    background-color: #17A000;
+    width: 5px;
+    height: 5px;
+}
+
+.color-calendar.glass .calendar__day.calendar__day-selected > .calendar__day-bullet {
+    display: none;
+}
+
+.color-calendar.glass .calendar__day.calendar__day-no-event > .calendar__day-bullet {
+    /* No dots */
+    /* background-color: #707070; 
+    position: absolute;
+    top: 80%;
+    border-radius: 50%;
+    width: 5px;
+    height: 5px;
+    left: 50%;
+    transform: translateX(-50%);
+    overflow: hidden; */
+    cursor: pointer;
+}
+
+/* Calendar Legend */
+
+.legend-container {
+    border: 1px solid gainsboro;
+    height: auto;
+    padding: 20px;
+    margin-top: 25px;
+    border-radius: 5px;
+}
+
+.legend-header {
+    font-weight: bold;
+    font-size: 0.9rem;
+    margin-bottom: 10px;
+}
+
+.color-row {
+    display: flex;
+    flex-direction: row;
+    justify-content: left;
+    font-size: 0.8rem;
+}
+
+.color-row > div {
+    width: 50%;
+    display: flex;
+}
+
+.unavail-icon {
+    background-color: #707070;
+    border-radius: 50%;
+    width: 10px;
+    height: 10px;
+    margin-right: 5px; 
+}
+
+.avail-icon {
+    background-color: #17A000;
+    border-radius: 50%;
+    width: 10px;
+    height: 10px;
+    margin-right: 5px; 
+}
+
+.selected-icon {
+    background-color: #90C0ED;
+    border-radius: 50%;
+    width: 10px;
+    height: 10px;
+    margin-right: 5px; 
+}
+
+.total-cost {
+    font-size: 18px;
+    margin: 10px;
+    font-weight: bold;
+    color: #2869A5;
+}
+
+/****************** Confirmation html elements *****************/
+
+.confirm-box {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border: 2px solid lightgray;
+    border-radius: 10px;
+    padding: 20px;
+}
+
+.message {
+    font-size: 20px;
+}
+
+.confirmed-slots {
+    font-size: 18px;
+    font-weight: bold;
+}
+
+.confirm-instruction-box {
+    margin: auto;
+    display: flex;
+    justify-content: center;
+    padding: 50px 0;
+    font-size: larger;
+    text-decoration: underline;
+}
