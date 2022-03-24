@@ -8,9 +8,15 @@
 </head>
 <body>
 	<script>
+		function GetURLParameter(sParam){
+		    var sPageURL = window.location.search.substring(1);
+		    return sPageURL.split('=')[1]
+		}
+
 		function setSessionStorage(){
-			sessionStorage.setItem('task_id', '1')
-			sessionStorage.setItem('start_time', new Date().now())
+			localStorage.setItem('task_id', GetURLParameter().toString())
+			localStorage.setItem('start_time', new Date().toString())
+			localStorage.setItem('clicks', "0")
 		}
 	</script>
 	<div id="startDiv">

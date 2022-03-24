@@ -1,20 +1,30 @@
 
 var uid = getUniqueId()
-var startTime = sessionStorage.getItem("start_time");
-var endTime = new Date().now();
-
-
+var startTime = new Date(localStorage.getItem("start_time")).getTime();
+var endTime = new Date().getTime();
+var taskid = localStorage.getItem("task_id")
 
 var technique = "tabular"
-var totaltimetaken = startTime - endTime
+var totaltimetaken = (endTime - startTime)/1000
 var retries = sessionStorage.getItem("retries")
-var clicks = null
-var taskid = null
-
+var clicks = localStorage.getItem("clicks")
 
 
 console.log(uid, technique, totaltimetaken, retries, clicks, taskid);
 sendNetworkLog(uid, technique, totaltimetaken, retries, clicks, taskid);
+
+localStorage.clear()
+localStorage.setItem('uid', uid.toString())
+
+function findFirstString(str, choices) {
+  for (var j = 0; j < choices.length; j++) {
+    if (str.indexOf(choices[j]) >= 0) {
+      return choices[j];
+    }
+  }
+  return '?';
+}
+
 
 function getUniqueId() {
   if (!('uid' in localStorage)) {

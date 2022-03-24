@@ -16,10 +16,6 @@
   * 
   * SET TASK ID IN SESSION STORAGE ACCORDING TO THIS ID LIST, WILL BE USED TO VALIDATE SELECTED SLOTS
   */
-// sessionStorage.setItem('task_id', '1')
-
-
-
 
 sessionStorage.removeItem('slots') // reset selected slots when back to filter page
 var month_ids = JSON.parse(sessionStorage.getItem('month'))

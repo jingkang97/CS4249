@@ -56,41 +56,15 @@
       </div>
     </div>
 
-    <!-- <span>
-    <div class="session_description">
-        <span>
-        <div id="session_info">
-            <div class="info_label">Date: </div> <span>02/03/2022 (Wed)</span>
-        </div>
-        <div id="session_info">
-            <div class="info_label">Session: </div> <span>7 (13:30-14:10)</span>
-        </div>
-        <div id="session_info">
-            <div class="info_label">Venue: </div> <span>BBDC</span>
-        </div>
-        </span>
-    </div>
-    </span> -->
 
     <script src="selection_script.js"></script>
     <script src="logging.js"></script>
     <script>
-      //   function sendCustomEvent() {
-      //       console.log('sendCustomEvent');
-      //       document.dispatchEvent(new CustomEvent('myevent', { detail: {
-      //           eventName: 'myeventName',
-      //           info: {'key1': 'val1', 'key2': 'val2'}
-      //       }}));
-      //   }
-      //   document.addEventListener('myevent', loggingjs.logEvent, true);
-
-      //   function sendCustomEvent2() {
-      //       console.log('sendCustomEvent2');
-      //       loggingjs.logEvent(null, 'myevent2', {
-      //           eventName: 'myeventName',
-      //           info: {'key1': 'val1', 'key2': 'val2'}
-      //       });
-      //   }
+      document.addEventListener("mousedown", function(){
+        var clicks = parseInt(localStorage.getItem('clicks'))
+        clicks += 1
+        localStorage.setItem('clicks', clicks)
+      })
     </script>
   </body>
 </html>
