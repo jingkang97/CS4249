@@ -1,43 +1,51 @@
-var uid = sessionStorage.getItem("uid")
-var taskID = sessionStorage.getItem("task_id")
-var startTime = sessionStorage.getItem("start_time")
-var endTime = new Date().toString()
-var time = null
-var eventName = null
-var target = null
-var info = null
-var path = window.location.pathname;
-var page = path.split("/").pop();
+
+var uid = getUniqueId()
+var startTime = sessionStorage.getItem("start_time");
+var endTime = new Date().now();
+
+
+
+var technique = "tabular"
+var totaltimetaken = startTime - endTime
 var retries = sessionStorage.getItem("retries")
+var clicks = null
+var taskid = null
 
 
 
-console.log(uid, time, eventName, target, info, page, retries, startTime, endTime, taskID);
-sendNetworkLog(uid, time, eventName, target, info, page, retries, startTime, endTime, taskID);
-  
+console.log(uid, technique, totaltimetaken, retries, clicks, taskid);
+sendNetworkLog(uid, technique, totaltimetaken, retries, clicks, taskid);
+
+function getUniqueId() {
+  if (!('uid' in localStorage)) {
+    var browser = findFirstString(navigator.userAgent, [
+      'Seamonkey', 'Firefox', 'Chromium', 'Chrome', 'Safari', 'OPR', 'Opera',
+      'Edge', 'MSIE', 'Blink', 'Webkit', 'Gecko', 'Trident', 'Mozilla']);
+    var os = findFirstString(navigator.userAgent, [
+      'Android', 'iOS', 'Symbian', 'Blackberry', 'Windows Phone', 'Windows',
+      'OS X', 'Linux', 'iOS', 'CrOS']).replace(/ /g, '_');
+    var unique = ('' + Math.random()).substr(2);
+    localStorage['uid'] = os + '-' + browser + '-' + unique;
+  }
+  return localStorage['uid'];
+}
+
+
 function sendNetworkLog(
     uid,
-    time,
-    eventname,
-    target,
-    info,
-    page,
+    technique,
+    totaltimetaken,
     retries,
-    starttime,
-    endtime,
+    clicks,
     taskid) {
-  var formid = "e/1FAIpQLSe8yewpMUaAnTZNac7TN06pDN-FNx-zF7pFzH157PHqfYhNFw";
+  var formid = "e/1FAIpQLSd6apAmYV5hKSnryEXWNAlRMWwBuFU7H40QddAjMMUi0Z7XkA";
   var data = {
-    "entry.85448220": uid,
-    "entry.2060888453": time,
-    "entry.198434459": eventname,
-    "entry.1489605823": target,
-    "entry.194930874": info,
-    "entry.1631208694": page,
-    "entry.1666937607": retries,
-    "entry.1507192564": starttime,
-    "entry.1599371994": endtime,
-    "entry.1608643112": taskid
+    "entry.314220540": uid,
+    "entry.46738998": technique,
+    "entry.372384347": totaltimetaken,
+    "entry.524771083": retries,
+    "entry.1316818887": clicks,
+    "entry.1671783670": taskid
   };
   var params = [];
   for (key in data) {

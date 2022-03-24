@@ -32,7 +32,6 @@
   * SET TASK ID IN SESSION STORAGE ACCORDING TO THIS ID LIST, WILL BE USED TO VALIDATE SELECTED SLOTS
   */
 // sessionStorage.setItem('task_id', '1')
-// sessionStorage.setItem('start_time', new Date().toString())
 
 
 
