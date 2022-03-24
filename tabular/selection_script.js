@@ -58,9 +58,11 @@ document.getElementById("selected_month").textContent=selected_months_string()
 document.getElementById("selected_session").textContent=selected_sessions_string()
 document.getElementById("selected_day").textContent=selected_days_string()
 
-function createHeader(header_name) {
+function createHeader(header_name, rowspan, colspan) {
     let header = document.createElement('th')
     header.innerHTML = header_name
+    header.setAttribute('rowspan', rowspan)
+    header.setAttribute('colspan', colspan)
     return header
 }
 
@@ -69,9 +71,6 @@ function createSessionRow(date, day) {
     let date_cell = document.createElement('td')
     date_cell.innerHTML = date + '\n' + day
     row.appendChild(date_cell)
-    let venue_cell = document.createElement('td')
-    venue_cell.innerHTML = 'BBDC'
-    row.appendChild(venue_cell)
     return row
 }
 
@@ -85,7 +84,7 @@ function createDescription(date, day, session) {
     let date_info = document.createElement('div')
     date_info.setAttribute('id', 'session_info')
     let date_label = document.createElement('div')
-    date_label.setAttribute('class', 'info_label')
+    date_label.setAttribute('class', 'slot_info_label')
     date_label.innerHTML = 'Date: '
     let date_value = document.createElement('span')
     date_value.innerHTML = date + ' (' + day + ')'
@@ -95,7 +94,7 @@ function createDescription(date, day, session) {
     let session_info = document.createElement('div')
     session_info.setAttribute('id', 'session_info')
     let session_label = document.createElement('div')
-    session_label.setAttribute('class', 'info_label')
+    session_label.setAttribute('class', 'slot_info_label')
     session_label.innerHTML = 'Session: '
     let session_value = document.createElement('span')
     session_value.innerHTML = session.toString() + ' (' + session_timings[session] + '-' + session_timings[session+1] + ')'
@@ -105,7 +104,7 @@ function createDescription(date, day, session) {
     let venue_info = document.createElement('div')
     venue_info.setAttribute('id', 'session_info')
     let venue_label = document.createElement('div')
-    venue_label.setAttribute('class', 'info_label')
+    venue_label.setAttribute('class', 'slot_info_label')
     venue_label.innerHTML = 'Venue: '
     let venue_value = document.createElement('span')
     venue_value.innerHTML = 'BBDC'
@@ -122,21 +121,27 @@ function createDescription(date, day, session) {
 var slots_table = document.getElementById("slots")
 
 // populating table headers
+const session_ids = Object.keys(selected_sessions)
 let header_row = document.createElement('tr')
 var headers = [
-    createHeader("Date"),
-    createHeader("Venue")
+    createHeader("Date", 2, 1),
+    createHeader("Session", 1, session_ids.length)
 ]
-const session_ids = Object.keys(selected_sessions)
+let header_row2 = document.createElement('tr')
+var headers2 = []
 for (var i = 0; i < session_ids.length; i++) {
     if (selected_sessions[session_ids[i]]) {
-        headers.push(createHeader("Session " + session_ids[i].toString()))
+        headers2.push(createHeader(session_ids[i].toString(), 1, 1))
     }
 }
 headers.forEach(header_cell => {
     header_row.appendChild(header_cell)
 })
+headers2.forEach(header_cell => {
+    header_row2.appendChild(header_cell)
+})
 slots_table.appendChild(header_row)
+slots_table.appendChild(header_row2)
 
 // populating table rows according to selected months (each month will have 4 avail dates, all sessions available)
 const available_dates = [5, 12, 19, 26]
@@ -184,7 +189,8 @@ for (i in selected_months) {
     }
 }
 
-if (slots_table.rows.length <= 1) {
+// there will always be 2 header rows, so if there is <= 2 rows in table, only header rows are available in table
+if (slots_table.rows.length <= 2) {
     alert('No slots found that fits your selection! Please click try again with a different selection.')
     document.location.href = "index.html"
 }
