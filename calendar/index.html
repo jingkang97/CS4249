@@ -10,11 +10,22 @@
 	<div id="startDiv">
 		<div>When you click <span class="start">Start</span>, the interface for the task will be revealed.</div>
 		<div>Click <span class="start">Start</span> when you are ready!</div>
-		<a href="task.html" onClick="startTask(1)"><button>START</button></a>
+		<a href="task.html" onClick="startTask()"><button>START</button></a>
 	</div>
     <script>
-        function startTask(id) {
+        function startTask() {
             sessionStorage.clear();
+
+            // get id
+            let id;
+            let url = window.location.search.substring(1); //get rid of "?" in querystring
+            let qArray = url.split('&'); //get key-value pairs
+            for (var i = 0; i < qArray.length; i++) 
+            {
+                var pArr = qArray[i].split('='); //split key and value
+                if (pArr[0] == "id") // get the param 'id' value
+                    id = pArr[1];
+            }
 
             // set task id
             sessionStorage.setItem("task_id", id);
