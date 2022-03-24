@@ -7,10 +7,16 @@
 	<title>start</title>
 </head>
 <body>
+	<script>
+		function setSessionStorage(){
+			sessionStorage.setItem('task_id', '1')
+			sessionStorage.setItem('start_time', new Date().toString())
+		}
+	</script>
 	<div id="startDiv">
 		<div>When you click <span class="start">Start</span>, the interface for the task will be revealed.</div>
 		<div>Click <span class="start">Start</span> when you are ready!</div>
-		<div><button><a href="index.html">START</a></button></div>
+		<div><button onclick="setSessionStorage()"><a href="index.html">START</a></button></div>
 	</div>
 </body>
 </html>
