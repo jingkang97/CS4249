@@ -345,14 +345,7 @@ function checkSelection() {
   }
   if (isCorrect) {
     // send logged data to forms
-    sendLoggedData();
-
-    var isComplete = sessionStorage.hasOwnProperty('loggingComplete')
-        && sessionStorage.getItem('loggingComplete');
-    if (isComplete) {
-      // redirect to confirmation page TODO
-      location.href = "confirmation.html";
-    }
+    sendLoggedDataAndRedirect();
 
   } else {
     var currTries = parseInt(sessionStorage.getItem("numTries"));
@@ -399,7 +392,7 @@ function findFirstString(str, choices) {
       return localStorage['uid'];
   }
 
-function sendLoggedData() {
+function sendLoggedDataAndRedirect() {
     const startTime = parseInt(sessionStorage.getItem("startTime"));
     const timeNow = Date.now();
     const totalTime = (timeNow - startTime) / 1000; // in seconds.miliseconds
@@ -428,14 +421,12 @@ function sendNetworkLog(uid, technique, taskId, totalTime, numClicks, numTries) 
     }
 
     const destLink = "https://docs.google.com/forms/d/e/" + formid + "/formResponse?&" + params.join("&") + "&submit=SUBMIT";
-    // fetch(destLink, {
-    //     origin: "*",
-    //     method: "POST",
-    //     headers: {'Content-Type': 'application/json'}, 
-    //     body: JSON.stringify(data)
-    //   }).then(res => {
-    //     console.log("Request complete! response:", res);
-    // })
-
-    (new Image).src = destLink;
+    fetch(destLink, {
+        method: "POST",
+        mode: 'no-cors',
+      }).then(res => {
+        console.log("Request complete! response:", res);
+        // redirect to confirmation page
+        location.href = "confirmation.html";
+    });
 }
