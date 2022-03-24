@@ -101,7 +101,10 @@ let selectedSessions = {};
 
 function clickAvailTimeSlotHandler(element) {
     const currDate = document.getElementById('selected-date').innerHTML;
-    const sessionNo = element.innerHTML.split("Session")[1].trim().charAt(0);
+    const sessionNo = element.innerHTML
+      .split("Session")[1]
+      .trim()
+      .split("</p>")[0];
     // add selected timeslot html only if timeslot not found in dict
     const key = currDate + sessionNo;
     if (!(key in selectedSessions)) {
@@ -139,7 +142,6 @@ function clickAvailTimeSlotHandler(element) {
 
 function clickSubmitHandler() {
     console.log("submit clicked with selectedSessions: ", selectedSessions);
-
     // show popup alert if user submits without selecting any slots
     if (Object.values(selectedSessions).length == 0) {
         window.alert('Please select booking slot(s) before submission.')
@@ -147,6 +149,7 @@ function clickSubmitHandler() {
         // add to sessionstorage as string
         sessionStorage.setItem('selectedSessions', JSON.stringify(selectedSessions));
         sessionStorage.setItem('totalCost', (13.91 * Object.values(selectedSessions).length).toFixed(2));
+        const task_id = sessionStorage.getItem("task_id");
 
         checkSelection();
     }

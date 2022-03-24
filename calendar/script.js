@@ -83,6 +83,7 @@ function checkSelection() {
         break;
       }
       var firstSelectedSlot = Object.values(confirmedSessions)[0];
+      console.log(firstSelectedSlot)
       if (firstSelectedSlot.session != "13") {
         isCorrect = false;
         break;
