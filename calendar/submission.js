@@ -399,7 +399,6 @@ function sendLoggedDataAndRedirect() {
     const taskId = sessionStorage.getItem("task_id");
     const technique = "calendar";
     sendNetworkLog(uid, technique, taskId, totalTime, numClicks, numTries);
-    sessionStorage.setItem('loggingComplete', true);
 }
 
 function sendNetworkLog(uid, technique, taskId, totalTime, numClicks, numTries) {
