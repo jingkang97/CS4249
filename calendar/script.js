@@ -345,8 +345,12 @@ function checkSelection() {
     // send logged data to forms
     sendLoggedData();
 
-    // redirect to confirmation page TODO
-    // location.href = "confirmation.html"; 
+    var isComplete = sessionStorage.getItem('loggingComplete');
+    if (isComplete) {
+      // redirect to confirmation page TODO
+      location.href = "confirmation.html";
+    }
+
   } else {
     var currTries = parseInt(sessionStorage.getItem("numTries"));
     if (!currTries) {
@@ -405,6 +409,7 @@ function sendLoggedData() {
     const taskId = sessionStorage.getItem("task_id");
     const technique = "calendar";
     sendNetworkLog(uid, technique, taskId, totalTime, numClicks, numTries);
+    sessionStorage.setItem('loggingComplete', true);
 }
 
 
