@@ -20,7 +20,7 @@
             let id;
             let url = window.location.search.substring(1); //get rid of "?" in querystring
             let qArray = url.split('&'); //get key-value pairs
-            console.log("reached C");
+            console.log("reached C", "url is: ", url);
             for (var i = 0; i < qArray.length; i++) 
             {
                 var pArr = qArray[i].split('='); //split key and value
