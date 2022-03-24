@@ -20,19 +20,16 @@
             let id;
             let url = window.location.search.substring(1); //get rid of "?" in querystring
             let qArray = url.split('&'); //get key-value pairs
-            console.log("reached C", "url is: ", url);
             for (var i = 0; i < qArray.length; i++) 
             {
                 var pArr = qArray[i].split('='); //split key and value
-                console.log("reached A", qArray, pArr);
                 if (pArr[0] == "id") { // get the param 'id' value
-                    console.log("reached B");
                     id = pArr[1];
-                    console.log(id);
                 }
             }
 
             // set task id
+            console.log("Task id is: ", id);
             sessionStorage.setItem("task_id", id);
 
             // initialise mouse clicks to 0
