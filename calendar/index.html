@@ -20,10 +20,13 @@
             let id;
             let url = window.location.search.substring(1); //get rid of "?" in querystring
             let qArray = url.split('&'); //get key-value pairs
+            console.log("reached C");
             for (var i = 0; i < qArray.length; i++) 
             {
+                console.log("reached A");
                 var pArr = qArray[i].split('='); //split key and value
                 if (pArr[0] == "id") { // get the param 'id' value
+                    console.log("reached B");
                     id = pArr[1];
                     console.log(id);
                 }
