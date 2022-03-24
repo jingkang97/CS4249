@@ -49,7 +49,6 @@ function logEvent(event, customName, customInfo) {
 
         // increment clicks
         sessionStorage.setItem("numClicks", numClicks + 1);
-        console.log("MOUSE CLICK!", sessionStorage.getItem("numClicks"));
     }
 }
 

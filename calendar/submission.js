@@ -83,7 +83,6 @@ function checkSelection() {
         break;
       }
       var firstSelectedSlot = Object.values(confirmedSessions)[0];
-      console.log(firstSelectedSlot)
       if (firstSelectedSlot.session != "13") {
         isCorrect = false;
         break;
@@ -354,7 +353,6 @@ function checkSelection() {
     }
     // increment num Tries
     sessionStorage.setItem("numTries", currTries + 1);
-    console.log(sessionStorage.getItem("numTries"));
     sessionStorage.removeItem("selectedSessions");
 
     // display fail html
@@ -405,7 +403,8 @@ function sendLoggedDataAndRedirect() {
 }
 
 function sendNetworkLog(uid, technique, taskId, totalTime, numClicks, numTries) {
-    console.log("SENDING NETWORK LOG", "time", totalTime, "clicks", numClicks, "tries", numTries);
+    console.log("SENDING NETWORK LOG", "uid", uid, "technique", technique, "taskId", taskId, 
+        "time", totalTime, "clicks", numClicks, "tries", numTries);
     var formid = "1FAIpQLSf-H0XExwzcCAFtxS1yQi_6q1yzBt2qsmitQUrAiep_oGNphA";
     var data = {
         "entry.291160548": uid,
