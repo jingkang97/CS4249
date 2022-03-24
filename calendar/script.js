@@ -219,7 +219,7 @@ function checkSelection() {
       dates.sort();
       sessionStorage.setItem("dates", dates);
       for (var i = 1; i < 3; i++) {
-        if (Math.abs(parseInt(dates[i]) - parseInt(dates[i - 1])) != 7) {
+        if (parseInt(dates[i]) - parseInt(dates[i - 1]) != 7) {
           isCorrect = false;
           break;
         }

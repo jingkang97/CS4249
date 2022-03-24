@@ -1,56 +1,30 @@
-<!doctype html>
 <html>
+
 <head>
-    <link rel="stylesheet" type="text/css" href="style.css">
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/color-calendar@1.0.5/dist/css/theme-glass.css" />
-    <title>Calendar Schedule</title>
+    <link rel="stylesheet" type="text/css" href="style.css" />
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Start Task</title>
 </head>
+
 <body>
     <div class="container">
-        <div class="title"> 
+        <div class="title">
             <h1>Driving Simulator Booking</h1>
         </div>
-        <div class="row">
-            <div>
-                <div id="color-calendar"></div>
-                <div class="legend-container">
-                    <div class="legend-header">Calendar legend</div>
-                    <div class="color-row">
-                        <div>
-                            <div class="avail-icon"></div>
-                            Available
-                        </div>
-                        <div>
-                            <div class="unavail-icon"></div>
-                            Not available
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col">
-                <h2 class="header">Available Time Slots</h2>
-                <div class="sub-header" id="selected-date"></div>
-                <div class="events-display"></div>
-            </div>
-        </div>
-        <div class="row">
-            <div class="selected-slots">
-                <h2>Selected Time Slots</h2>
-                <div class="selectedSlots"></div>
-                <div class="price">Grand Total: $
-                    <span class="total-sum">0.00</span>
-                </div>
-            </div>
-        </div>
-        <div class="button-container" onClick="clickSubmitHandler()">
-            <button class="submit-button">Submit</button>
+
+        <div class="confirm-box">
+            <div id="message"></div>
+            <a href="task.html"><button class="submit-button">Start task</button></a>
         </div>
     </div>
-    <script src="https://cdn.jsdelivr.net/npm/color-calendar@1.0.5/dist/bundle.min.js"></script>
-    <script src="script.js"></script>
-    <script src="calendar.js"></script>
-    <script src="logging.js"></script>
 </body>
+
 </html>
+
+<script>
+
+    let messageHTML = `<p>Click on the button below to start the task.</p>`
+    document.getElementById("message").innerHTML = messageHTML;
+
+</script>

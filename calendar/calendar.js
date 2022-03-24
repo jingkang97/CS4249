@@ -93,7 +93,7 @@ if (document.querySelector(".selectedSlots").innerHTML.length == 0) {
 }
 
 // Set task_id here
-sessionStorage.setItem('task_id', '18')
+sessionStorage.setItem('task_id', '13')
 sessionStorage.removeItem("loggingComplete");
 sessionStorage.removeItem("selectedSessions");
 
