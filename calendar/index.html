@@ -1,30 +1,37 @@
+<!DOCTYPE html>
 <html>
-
 <head>
-    <link rel="stylesheet" type="text/css" href="style.css" />
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Start Task</title>
+	<link rel="stylesheet" type="text/css" href="start_styles.css">
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>start</title>
 </head>
-
 <body>
-    <div class="container">
-        <div class="title">
-            <h1>Driving Simulator Booking</h1>
-        </div>
+	<div id="startDiv">
+		<div>When you click <span class="start">Start</span>, the interface for the task will be revealed.</div>
+		<div>Click <span class="start">Start</span> when you are ready!</div>
+		<a href="task.html" onClick="startTask(1)"><button>START</button></a>
+	</div>
+    <script>
+        function startTask(id) {
+            sessionStorage.clear();
+            sessionStorage.setItem("task_id", id);
 
-        <div class="confirm-box">
-            <div id="message"></div>
-            <a href="task.html"><button class="submit-button">Start task</button></a>
-        </div>
-    </div>
+            // initialise mouse clicks to 0
+            var numClicks = parseInt(sessionStorage.getItem("numClicks"));
+            if (!numClicks) {
+                sessionStorage.setItem("numClicks", 0);
+            }
+
+            // initialise num tries to 0
+            var numTries = parseInt(sessionStorage.getItem("numTries"));
+            if (!numTries) {
+                sessionStorage.setItem("numTries", 0);
+            }
+
+            // set current time (in miliseconds) as start time
+            sessionStorage.setItem("startTime", Date.now());
+        }
+    </script>
 </body>
-
 </html>
-
-<script>
-
-    let messageHTML = `<p>Click on the button below to start the task.</p>`
-    document.getElementById("message").innerHTML = messageHTML;
-
-</script>

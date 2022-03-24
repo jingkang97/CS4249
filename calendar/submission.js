@@ -1,4 +1,4 @@
-// Script to check user calendar input for correctness
+// Script to check user calendar input for correctness and to submit logged data
 
 function checkSelection() {
 
@@ -369,12 +369,6 @@ function checkSelection() {
   }
 }
 
-// TODO: should be called for each new task
-function changeTaskIdAndResetStorage(id) {
-    sessionStorage.clear();
-    sessionStorage.setItem("task_id", id);
-}
-
 // =========== Logging helper functions =========== 
 
 // A persistent unique id for the user.
@@ -406,7 +400,9 @@ function findFirstString(str, choices) {
   }
 
 function sendLoggedData() {
-    const totalTime = 0; // TODO
+    const startTime = parseInt(sessionStorage.getItem("startTime"));
+    const timeNow = Date.now();
+    const totalTime = (timeNow - startTime) / 1000; // in seconds.miliseconds
     const numClicks = sessionStorage.getItem("numClicks");
     const numTries = sessionStorage.getItem("numTries");
     const taskId = sessionStorage.getItem("task_id");
@@ -415,35 +411,6 @@ function sendLoggedData() {
     sessionStorage.setItem('loggingComplete', true);
 }
 
-
-/////////////////////////////////////////////////////////////////////////////
-// CHANGE ME:
-// ** Replace the function below by substituting your own google form. **
-/////////////////////////////////////////////////////////////////////////////
-//
-// 1. Create a Google form called "Network Log" at forms.google.com.
-// 2. Set it up to have several "short answer" questions; here we assume
-//    seven questions: uid, time, eventName, target, info, state, version.
-// 3. Run googlesender.py to make a javascript
-//    function that submits records directly to the form.
-// 4. Put that function in here, and replace the current sendNetworkLog
-//    so that your version is called to log events to your form.
-//
-// For example, the following code was written as follows:
-// python googlesender.py https://docs.google.com/forms/d/e/1.../viewform
-//
-// This preocess changes the ids below to direct your data into your own
-// form and spreadsheet. The formid must be customized, and also the form
-// field names such as "entry.1291686978" must be matched to your form.
-// (The numerical field names for a Google form can be found by inspecting
-// the form input fields.) This can be done manually, but since this is an
-// error-prone process, it can be easier to use googlesender.py.
-//
-/////////////////////////////////////////////////////////////////////////////
-// Network Log submission function
-// submits to the google form at this URL:
-// docs.google.com/forms/d/e/1vCd7k3jyrWdQVimFdpvjezBVvO7v9TcWnA0jPYgaZZc
-// 
 function sendNetworkLog(uid, technique, taskId, totalTime, numClicks, numTries) {
     console.log("SENDING NETWORK LOG", "time", totalTime, "clicks", numClicks, "tries", numTries);
     var formid = "1FAIpQLSf-H0XExwzcCAFtxS1yQi_6q1yzBt2qsmitQUrAiep_oGNphA";

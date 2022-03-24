@@ -2,17 +2,8 @@
 //
 // A simple Google-spreadsheet-based event logging framework.
 //
-// Add logging.js to your Web App to log standard input and custom events.
-//
-// This is currently set up to log every mousedown and keydown
-// event, as well as any events that might be triggered within
-// the app by triggering the 'log' event anywhere in the doc
-// as follows:
-//
-// document.dispatchEvent(new CustomEvent('log', { detail: {
-//   eventName: 'myevent',
-//   info: {key1: val1, key2: val2}
-// }}));
+// This is currently set up to log every mousedown only 
+
 
 var ENABLE_NETWORK_LOGGING = true; // Controls network logging.
 var ENABLE_CONSOLE_LOGGING = true; // Controls console logging.
@@ -51,41 +42,20 @@ function hookEventsToLog() {
 
 // Logs mouse clicks
 function logEvent(event, customName, customInfo) {
-    // console.log('event', event, 'customName', customName, 'customInfo', customInfo);
-    
     var eventName = customName || event.type;
     if (eventName == "mousedown") {
-        // get numMouseClicks
+        // get clicks
         var numClicks = parseInt(sessionStorage.getItem("numClicks"));
-        if (!numClicks) {
-            numClicks = 0;
-        }
-        // increment num Tries
+
+        // increment clicks
         sessionStorage.setItem("numClicks", numClicks + 1);
         console.log("MOUSE CLICK!", sessionStorage.getItem("numClicks"));
     }
 }
 
-function setUpSessionStorage() {
-    // initialise mouse clicks to 0
-    var numClicks = parseInt(sessionStorage.getItem("numClicks"));
-    if (!numClicks) {
-        sessionStorage.setItem("numClicks", 0);
-    }
-
-    // initialise num tries to 0
-    var numTries = parseInt(sessionStorage.getItem("numTries"));
-    if (!numTries) {
-        sessionStorage.setItem("numTries", 0);
-    }
-}
-
-// OK, go.
 if (ENABLE_NETWORK_LOGGING) {
   hookEventsToLog();
 }
-
-setUpSessionStorage();
 
 // module pattern to allow some key functions to be "public"
 return {

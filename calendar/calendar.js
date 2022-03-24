@@ -2,8 +2,6 @@
 
 const costPerSession = 13.91;
 
-console.log("num ", sessionStorage.getItem("numTries"));
-
 // create avail dates from mar 2022 to feb 2023 for the days 5/12/19/26, with all 15 slots
 const sessNumToTime = {
     1: '08:30 AM - 09:30 AM',
@@ -87,16 +85,6 @@ new Calendar({
     },
 });
 
-// render timeslots 
-if (document.querySelector(".selectedSlots").innerHTML.length == 0) {
-    document.querySelector(".selectedSlots").innerHTML = `<p>Please select a timeslot above.</p>`
-}
-
-// Set task_id here
-sessionStorage.setItem('task_id', '13')
-sessionStorage.removeItem("loggingComplete");
-sessionStorage.removeItem("selectedSessions");
-
 let selectedSessions = {};
 
 function clickAvailTimeSlotHandler(element) {
@@ -138,17 +126,20 @@ function clickAvailTimeSlotHandler(element) {
     // display html
     document.querySelector(".selectedSlots").innerHTML = allSelectedSlotsHtml;
     document.getElementsByClassName("total-sum")[0].innerText = (numOfSelectedSlots * costPerSession).toFixed(2);
+    
+    if (document.querySelector(".selectedSlots").innerHTML.length == 0) {
+        document.querySelector(".selectedSlots").innerHTML = `<p>Please select a timeslot above.</p>`
+    }
 }
 
 function clickSubmitHandler() {
-    console.log("submit clicked with selectedSessions: ", selectedSessions);
     // show popup alert if user submits without selecting any slots
     if (Object.values(selectedSessions).length == 0) {
         window.alert('Please select booking slot(s) before submission.')
     } else {
         // add to sessionstorage as string
         sessionStorage.setItem('selectedSessions', JSON.stringify(selectedSessions));
-        sessionStorage.setItem('totalCost', (13.91 * Object.values(selectedSessions).length).toFixed(2));
+        sessionStorage.setItem('totalCost', (costPerSession * Object.values(selectedSessions).length).toFixed(2));
         const task_id = sessionStorage.getItem("task_id");
 
         checkSelection();
