@@ -207,17 +207,18 @@ function checkSelection() {
       var month1 = firstSelectedSlot.date.split(" ")[1];
       var month2 = secondSelectedSlot.date.split(" ")[1];
       var month3 = thirdSelectedSlot.date.split(" ")[1];
-      if (!(month1 == month2 && month1 == month3)) {
+      if (month1 != month2 || month1 != month3) {
         isCorrect = false;
         break;
       }
-      var date1 = parseInt(firstSelectedSlot.date.split(" ")[2]);
-      var date2 = parseInt(secondSelectedSlot.date.split(" ")[2]);
-      var date3 = parseInt(thirdSelectedSlot.date.split(" ")[2]);
+      var date1 = firstSelectedSlot.date.split(" ")[2];
+      var date2 = secondSelectedSlot.date.split(" ")[2];
+      var date3 = thirdSelectedSlot.date.split(" ")[2];
       var dates = [date1, date2, date3];
       dates.sort();
+      sessionStorage.setItem('dates', dates);
       for (var i = 1; i < 3; i++) {
-        if (dates[i] - dates[i - 1] != 7) {
+        if (Math.abs(parseInt(dates[i]) - parseInt(dates[i - 1])) != 7) {
           isCorrect = false;
           break;
         }
@@ -343,13 +344,13 @@ function checkSelection() {
   }
   if (isCorrect) {
     // send logged data to forms
-    sendLoggedData();
+    // sendLoggedData();
 
-    var isComplete = sessionStorage.getItem('loggingComplete');
-    if (isComplete) {
+    // var isComplete = localStorage.hasOwnProperty('loggingComplete');
+    // if (isComplete) {
       // redirect to confirmation page TODO
       location.href = "confirmation.html";
-    }
+    // }
 
   } else {
     var currTries = parseInt(sessionStorage.getItem("numTries"));

@@ -93,7 +93,7 @@ if (document.querySelector(".selectedSlots").innerHTML.length == 0) {
 }
 
 // Set task_id here
-sessionStorage.setItem('task_id', '1')
+sessionStorage.setItem('task_id', '13')
 
 let selectedSessions = {};
 
@@ -144,7 +144,7 @@ function clickSubmitHandler() {
     } else {
         // add to sessionstorage as string
         sessionStorage.setItem('selectedSessions', JSON.stringify(selectedSessions));
-        sessionStorage.setItem('totalCost', 13.91 * Object.values(selectedSessions).length);
+        sessionStorage.setItem('totalCost', (13.91 * Object.values(selectedSessions).length).toFixed(2));
 
         checkSelection();
     }
