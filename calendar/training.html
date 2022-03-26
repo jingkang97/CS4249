@@ -55,11 +55,13 @@
                 });
                 if (events_html) {
                     events_display.innerHTML = events_html;
+                    parent.postMessage("End of Training", "*");
                 } else {
                     events_display.innerHTML = '<span class="no-events-text"></span>';
                 }
             },
         })
+
     </script>
 </body>
 
