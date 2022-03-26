@@ -4,15 +4,30 @@
   * 2: Book one slot that falls on a Monday. 
   * 3: Book a slot on 12 September 2022. 
   * 
+  * ONE SLOT - TIME PREFERENCE
+  * 4: Book a slot that starts at 4.30 PM.
+  * 5: Book a slot that starts at 10.30 AM.
+  * 6: Book a slot that starts at 8.30 PM.
+  * 
   * TWO SLOTS - DATE PREFERENCE
   * 7: Book two slots exactly one week apart in the same month. (One slot per week)
   * 8: Book two slots that fall on the same Monday. 
   * 9: Book a slot on 12 September 2022 and a slot on 19 September 2022. 
   * 
+  * TWO SLOTS - TIME PREFERENCE
+  * 10: Book two slots that starts at 4.30 PM.
+  * 11: Book two slots that starts at 10.30 AM.
+  * 12: Book two slots that starts at 8.30 PM.
+  * 
   * THREE SLOTS - DATE PREFERENCE
   * 13: Book three slots exactly one week apart from one another in the same month. (One slot per week)
   * 14: Book three slots that fall on the same Monday. 
   * 15: Book a slot on 12 September 2022 19 September 2022, and 26 September 2022. 
+  * 
+  * FOUR SLOTS - TIME PREFERENCE
+  * 16: Book three slots that starts at 4.30 PM.
+  * 17: Book three slots that starts at 10.30 AM.
+  * 18: Book three slots that starts at 8.30 PM.
   * 
   * SET TASK ID IN SESSION STORAGE ACCORDING TO THIS ID LIST, WILL BE USED TO VALIDATE SELECTED SLOTS
   */
