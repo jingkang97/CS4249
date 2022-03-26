@@ -1,0 +1,66 @@
+<html>
+
+<head>
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Training</title>
+    <link href="https://www.cssscript.com/demo/sticky.css" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/color-calendar@1.0.5/dist/css/theme-basic.css" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/color-calendar@1.0.5/dist/css/theme-glass.css" />
+</head>
+
+<body>
+    <div>
+        <h3>Date selected:</h3>
+        <span class="training-selected-date"></span>
+        <div id="training-calendar"></div>
+        <div class="legend-container" style="width: 370px;">
+            <div class="legend-header">Calendar legend</div>
+            <div class="color-row">
+                <div>
+                    <div class="avail-icon"></div>
+                    Available
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/color-calendar@1.0.5/dist/bundle.min.js"></script>
+    <script>
+        new Calendar({
+            id: '#training-calendar',
+            calendarSize: 'large',
+            theme: 'glass',
+            primaryColor: '#4F98DB',
+            headerBackgroundColor: '#4F98DB',
+            eventsData: [
+                {
+                    start: '2022-06-12T08:30:00',
+                    end: '2022-06-12T09:30:00',
+                    name: '12 Jun 2022',
+                }, {
+                    start: '2023-01-10T09:30:00',
+                    end: '2023-01-10T10:30:00',
+                    name: '10 Jan 2023',
+                }
+            ],
+            dateChanged: (currentDate, events) => {
+                const events_display = document.querySelector('.training-selected-date');
+                let events_html = '';
+                console.log(currentDate, events);
+                events.forEach(event => {
+                    events_html += `<span>${event.name}</span>`
+                });
+                if (events_html) {
+                    events_display.innerHTML = events_html;
+                } else {
+                    events_display.innerHTML = '<span class="no-events-text"></span>';
+                }
+            },
+        })
+    </script>
+</body>
+
+</html>
