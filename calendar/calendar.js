@@ -50,6 +50,30 @@ for (i = 0; i < 2; i++) {
     addSessions(i, 2023);
 }
 
+const extraAvailDays = [4, 11, 18, 25];
+
+function addExtraSessions(month, year) {
+  extraAvailDays.forEach((day) => {
+    const date = new Date(year, month, day);
+    // only add if date is past today
+    if (date > Date.now()) {
+      for (const key in sessNumToTime) {
+        sessions.push({
+          start: date.toISOString(),
+          end: date.toISOString(),
+          slot: sessNumToTime[key],
+          session: "Session " + key,
+        });
+      }
+    }
+  });
+  sessions.flat();
+}
+
+// apr 2022
+addExtraSessions(3, 2022);
+
+
 // render calendar
 new Calendar({
     id: '#color-calendar',
