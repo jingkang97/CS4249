@@ -29,7 +29,7 @@
   * 17: Book three slots that starts at 10.30 AM.
   * 18: Book three slots that starts at 8.30 PM.
   * 
-  * SET TASK ID IN SESSION STORAGE ACCORDING TO THIS ID LIST, WILL BE USED TO VALIDATE SELECTED SLOTS
+  * SET TASK ID IN LOCAL STORAGE (DONE IN INDEX.HTML) ACCORDING TO THIS ID LIST, WILL BE USED TO VALIDATE SELECTED SLOTS
   */
 
 sessionStorage.removeItem('slots') // reset selected slots when back to filter page
@@ -45,7 +45,7 @@ if (!month_ids) {
 var all = true
 var session_ids = JSON.parse(sessionStorage.getItem('session'))
 if (!session_ids) {
-    session_ids = {'1': false, '2': false, '3': false, '4': false, '5': false, '6': false, '7': false, '8': false, '9': false, '10': false, '11': false, '12': false, '13': false, '14': false, '15': false, '16': false}
+    session_ids = {'1': false, '2': false, '3': false, '4': false, '5': false, '6': false, '7': false, '8': false, '9': false, '10': false, '11': false, '12': false, '13': false, '14': false, '15': false}
 } else {
     for (i in session_ids) {
         if (all && !session_ids[i]) {

@@ -1,4 +1,3 @@
-
 var uid = getUniqueId()
 var startTime = new Date(localStorage.getItem("start_time")).getTime();
 var endTime = new Date().getTime();
@@ -6,7 +5,7 @@ var taskid = localStorage.getItem("task_id")
 
 var technique = "tabular"
 var totaltimetaken = (endTime - startTime)/1000
-var retries = sessionStorage.getItem("retries")
+var retries = localStorage.getItem("retries")
 var clicks = localStorage.getItem("clicks")
 
 
@@ -14,6 +13,7 @@ console.log(uid, technique, totaltimetaken, retries, clicks, taskid);
 sendNetworkLog(uid, technique, totaltimetaken, retries, clicks, taskid);
 
 localStorage.clear()
+sessionStorage.clear()
 localStorage.setItem('uid', uid.toString())
 
 function findFirstString(str, choices) {

@@ -1,6 +1,6 @@
 if (sessionStorage.getItem('month') === null || sessionStorage.getItem('session') === null || sessionStorage.getItem('day') === null) {
     alert('Invalid selection. Please select at least 1 value for Month, Session, and Day.')
-    document.location.href = "index.html"
+    document.location.href = "tabular.html"
 }
 
 const selected_months = JSON.parse(sessionStorage.getItem('month'))
@@ -172,27 +172,49 @@ for (i in selected_months) {
                         let description = document.createElement('span')
                         description.setAttribute('class', 'hover_description')
                         description.appendChild(createDescription(date_string, day_string, j))
-                        // let description = createDescription(date_string, day_string, j)
                         session_cell.appendChild(description)
                         session_row.appendChild(session_cell)
                     }
                 }
-                // for (let j = 15; j <= 16; j++) {
-                //     if (selected_sessions[j]) {
-                //         let session_cell = document.createElement('td')
-                //         session_row.appendChild(session_cell)
-                //     }
-                // }
                 slots_table.appendChild(session_row)
             }
         })
+        // add 4 more days for month of april
+        if (month == 3) {
+            [4, 11, 18, 25].forEach(date => {
+                let session_date = new Date(parseInt(year), month, date)
+                let day = session_date.getDay()
+                if (selected_days[days[day]]) {
+                    let day_string = days[day].charAt(0).toUpperCase() + days[day].slice(1)
+                    let date_string = session_date.toLocaleString('en-GB').substring(0,10)
+                    let session_row = createSessionRow(date_string, day_string)
+                    for (let j = 1; j <= 16; j++) {
+                        if (selected_sessions[j]) {
+                            let session_cell = document.createElement('td')
+                            session_cell.setAttribute('class', 'session_cell')
+                            let checkbox = document.createElement('input')
+                            checkbox.setAttribute('type', 'checkbox')
+                            let id = date_string + ' ' + day_string + '|' + j.toString() + '|' + session_timings[j] + '-' + session_timings[j+1] + '|' + 'BBDC'
+                            checkbox.setAttribute('id', id)
+                            session_cell.appendChild(checkbox)
+                            let description = document.createElement('span')
+                            description.setAttribute('class', 'hover_description')
+                            description.appendChild(createDescription(date_string, day_string, j))
+                            session_cell.appendChild(description)
+                            session_row.appendChild(session_cell)
+                        }
+                    }
+                    slots_table.appendChild(session_row)
+                }
+            })
+        }
     }
 }
 
 // there will always be 2 header rows, so if there is <= 2 rows in table, only header rows are available in table
 if (slots_table.rows.length <= 2) {
     alert('No slots found that fits your selection! Please click try again with a different selection.')
-    document.location.href = "index.html"
+    document.location.href = "tabular.html"
 }
 
 var selected_slots = sessionStorage.getItem('slots')

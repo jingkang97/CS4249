@@ -47,18 +47,22 @@
       </div>
 
       <div class="button-container">
-        <button style="margin-left: 0px">
-          <a href="index.html">&lt;&lt; Back</a>
-        </button>
-        <button style="margin-left: 2px" id="submit">
-          <a href="confirmation.html">Submit</a>
-        </button>
+        <a href="tabular.html">
+          <button style="margin-left: 0px">
+            Back
+          </button>
+        </a>
+        <a href="confirmation.html">
+          <button style="margin-left: 2px" id="submit">
+            Submit
+          </button>
+        </a>
       </div>
     </div>
 
 
     <script src="selection_script.js"></script>
-    <script src="logging.js"></script>
+    <!-- <script src="logging.js"></script> -->
     <script>
       document.addEventListener("mousedown", function(){
         var clicks = parseInt(localStorage.getItem('clicks'))

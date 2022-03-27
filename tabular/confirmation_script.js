@@ -1,3 +1,8 @@
+if (sessionStorage.getItem('slots') === null || sessionStorage.getItem('slots').length === 0) {
+  alert('Invalid selection. Please select at least 1 slot.')
+  document.location.href = "selection.html"
+}
+
 const selected_slots = sessionStorage.getItem("slots").split(",");
 var confirmation_table = document.getElementById("confirmation-table");
 const total_row = document.getElementById("total_row");
@@ -29,7 +34,7 @@ document.getElementById("total_session_charge_value").innerHTML =
   total_session_charge;
 document.getElementById("grand_total_value").innerHTML = total_session_charge;
 
-const task_id = sessionStorage.getItem('task_id')
+const task_id = localStorage.getItem('task_id')
 /**
  * task id format
  * <date string> <day string>|<slot #>|<session start>-<session end>|BBDC
@@ -324,21 +329,10 @@ function checkSelection() {
   }
   if (correct) {
     location.href = "success.html"
-    // retries value here can be logged to get no. of retries taken / no. of attempts needed
-    var retries = sessionStorage.getItem("retries")
-    if (!retries) {
-      retries = 0 // no retries needed so total no. of attempts = 1
-    } else {
-      retries = parseInt(retries) // some retries needed, total no. of attempts = retries + 1
-    }
   } else {
     location.href = "fail.html"
-    const retries = sessionStorage.getItem("retries")
+    const retries = parseInt(localStorage.getItem("retries"))
+    localStorage.setItem('retries', (retries + 1).toString())
     sessionStorage.clear()
-    if (!retries) {
-      sessionStorage.setItem("retries", '1')
-    } else {
-      sessionStorage.setItem("retries", (parseInt(retries) + 1).toString())
-    }
   }
 }
