@@ -10,7 +10,7 @@ function GetURLParameter(sParam) {
 
 const training_id = GetURLParameter().toString();
 
-sessionStorage.removeItem("slots"); // reset selected slots when back to filter page
+sessionStorage.clear()
 var month_ids = JSON.parse(sessionStorage.getItem("month"));
 if (!month_ids) {
   month_ids = {
