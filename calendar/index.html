@@ -13,24 +13,24 @@
 		<a href="task.html" onClick="startTask()"><button>START</button></a>
 	</div>
     <script>
-        function startTask() {
-            sessionStorage.clear();
-
-            // get id
-            let id;
-            let url = window.location.search.substring(1); //get rid of "?" in querystring
+		function GetURLParameter(sParam){
+		    var sPageURL = window.location.search.substring(1);
             let qArray = url.split('&'); //get key-value pairs
             for (var i = 0; i < qArray.length; i++) 
             {
                 var pArr = qArray[i].split('='); //split key and value
-                if (pArr[0] == "id") { // get the param 'id' value
-                    id = pArr[1];
+                if (pArr[0] == sParam) { // get the param 'id' value
+                    return pArr[1];
                 }
             }
+		}
 
-            // set task id
-            console.log("Task id is: ", id);
-            sessionStorage.setItem("task_id", id);
+        function startTask() {
+            sessionStorage.clear();
+
+            // set task id and mturk id
+            sessionStorage.setItem("task_id", GetURLParameter("id"));
+            sessionStorage.setItem("mturk", GetURLParameter("mturk"));
 
             // initialise mouse clicks to 0
             var numClicks = parseInt(sessionStorage.getItem("numClicks"));

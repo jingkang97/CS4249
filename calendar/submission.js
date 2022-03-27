@@ -401,15 +401,16 @@ function sendLoggedDataAndRedirect() {
     const numTries = sessionStorage.getItem("numTries");
     const taskId = sessionStorage.getItem("task_id");
     const technique = "calendar";
-    sendNetworkLog(uid, technique, taskId, totalTime, numClicks, numTries);
+    const mturkId = sessionStorage.getItem("mturk");
+    sendNetworkLog(uid, technique, taskId, totalTime, numClicks, numTries, mturkId);
 }
 
-function sendNetworkLog(uid, technique, taskId, totalTime, numClicks, numTries) {
+function sendNetworkLog(uid, technique, taskId, totalTime, numClicks, numTries, mturk) {
     console.log("SENDING NETWORK LOG", "uid", uid, "technique", technique, "taskId", taskId, 
         "time", totalTime, "clicks", numClicks, "tries", numTries);
     var formid = "1FAIpQLSf-H0XExwzcCAFtxS1yQi_6q1yzBt2qsmitQUrAiep_oGNphA";
     var data = {
-        "entry.291160548": uid,
+        "entry.291160548": mturk,
         "entry.1369922782": technique,
         "entry.1199872660": taskId,
         "entry.2053817221": totalTime,

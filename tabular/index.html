@@ -10,11 +10,19 @@
 	<script>
 		function GetURLParameter(sParam){
 		    var sPageURL = window.location.search.substring(1);
-		    return sPageURL.split('=')[1]
+            let qArray = url.split('&'); //get key-value pairs
+            for (var i = 0; i < qArray.length; i++) 
+            {
+                var pArr = qArray[i].split('='); //split key and value
+                if (pArr[0] == sParam) { // get the param 'id' value
+                    return pArr[1];
+                }
+            }
 		}
 
 		function setSessionStorage(){
-			localStorage.setItem('task_id', GetURLParameter().toString())
+			localStorage.setItem('task_id', GetURLParameter("id").toString())
+            localStorage.setItem('mturk', GetURLParameter("mturk").toString())
 			localStorage.setItem('start_time', new Date().toString())
 			localStorage.setItem('clicks', "0")
 			localStorage.setItem('retries', '0')

@@ -12,9 +12,11 @@ var totaltimetaken = (endTime - startTime)/1000
 var retries = localStorage.getItem("retries")
 var clicks = localStorage.getItem("clicks")
 
+var mturk = localStorage.getItem("mturk");
 
-console.log(uid, technique, totaltimetaken, retries, clicks, taskid);
-sendNetworkLog(uid, technique, totaltimetaken, retries, clicks, taskid);
+
+console.log(uid, technique, totaltimetaken, retries, clicks, taskid, mturk);
+sendNetworkLog(uid, technique, totaltimetaken, retries, clicks, taskid, mturk);
 
 // enable qualtrics next button
 parent.postMessage("End of Survey", "*");
@@ -54,10 +56,12 @@ function sendNetworkLog(
     totaltimetaken,
     retries,
     clicks,
-    taskid) {
+    taskid,
+    mturk
+    ) {
   var formid = "e/1FAIpQLSd6apAmYV5hKSnryEXWNAlRMWwBuFU7H40QddAjMMUi0Z7XkA";
   var data = {
-    "entry.314220540": uid,
+    "entry.314220540": mturk,
     "entry.46738998": technique,
     "entry.372384347": totaltimetaken,
     "entry.524771083": retries,
