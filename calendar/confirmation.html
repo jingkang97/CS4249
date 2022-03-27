@@ -5,7 +5,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <title>Confirmation</title>
     </head>
-    <body>
+    <!-- <body>
         <div class="container">
             <div class="title">
                 <h1>Driving Simulator Booking</h1>
@@ -20,10 +20,26 @@
                 <p>Please click <strong>Next</strong> on Qualtrics to proceed to the next page</p>
             </div>
         </div>
-    </body>
+    </body> -->
+    <div style="
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+    align-items: center;
+    font-size: 20px;
+    text-align: center;">
+        <h3 style="color: #061249; text-decoration: bold; line-height: 0">
+          Booking Completed!
+        </h3>
+      </div>
 </html>
 
-<script>
+<!-- <script>
     // get from sessionstorage as object
     var confirmedSessions = JSON.parse(sessionStorage.getItem('selectedSessions'));
 
@@ -49,4 +65,4 @@
     document.querySelector('.total-cost').innerHTML = `Total cost: $` + cost;
 
     parent.postMessage("End of Survey", "*");
-</script>
+</script> -->
