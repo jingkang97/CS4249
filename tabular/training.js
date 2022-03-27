@@ -29,7 +29,7 @@ if (!month_ids) {
   };
 } else {
   for (i in month_ids) {
-    document.getElementById(i).checked = month_ids[i];
+    // document.getElementById(i).checked = month_ids[i];
   }
 }
 
@@ -58,10 +58,10 @@ if (!session_ids) {
     if (all && !session_ids[i]) {
       all = false;
     }
-    document.getElementById(i).checked = session_ids[i];
+    // document.getElementById(i).checked = session_ids[i];
   }
   if (all) {
-    document.getElementById("allsessions").checked = true;
+    // document.getElementById("allsessions").checked = true;
   }
 }
 
@@ -82,10 +82,10 @@ if (!day_ids) {
     if (all && !day_ids[i]) {
       all = false;
     }
-    document.getElementById(i).checked = day_ids[i];
+    // document.getElementById(i).checked = day_ids[i];
   }
   if (all) {
-    document.getElementById("alldays").checked = true;
+    // document.getElementById("alldays").checked = true;
   }
 }
 
