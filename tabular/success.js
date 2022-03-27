@@ -12,6 +12,9 @@ var clicks = localStorage.getItem("clicks")
 console.log(uid, technique, totaltimetaken, retries, clicks, taskid);
 sendNetworkLog(uid, technique, totaltimetaken, retries, clicks, taskid);
 
+// enable qualtrics next button
+parent.postMessage("End of Survey", "*");
+
 localStorage.clear()
 sessionStorage.clear()
 localStorage.setItem('uid', uid.toString())
