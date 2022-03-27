@@ -362,9 +362,6 @@ function checkSelection() {
 
 // =========== Logging helper functions =========== 
 
-// A persistent unique id for the user.
-var uid = getUniqueId();
-
 // Parse user agent string by looking for recognized substring.
 function findFirstString(str, choices) {
     for (var j = 0; j < choices.length; j++) {
@@ -391,6 +388,12 @@ function findFirstString(str, choices) {
   }
 
 function sendLoggedDataAndRedirect() {
+    var uid = localStorage.getItem('uid');
+    if (uid === null) {
+        uid = getUniqueId();
+        localStorage.setItem('uid', uid.toString());
+    }
+
     const startTime = parseInt(sessionStorage.getItem("startTime"));
     const timeNow = Date.now();
     const totalTime = (timeNow - startTime) / 1000; // in seconds.miliseconds
