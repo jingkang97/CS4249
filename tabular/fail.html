@@ -12,26 +12,18 @@
       <h3 style="color: #061249; text-decoration: bold; line-height: 0">
         Incorrect Booking, try again!
       </h3>
-      <button><a href="index.html"><< Back</a></button>
-    <script src="script.js"></script>
-    <script src="logging.js"></script>
-    <script>
-      function sendCustomEvent() {
-          console.log('sendCustomEvent');
-          document.dispatchEvent(new CustomEvent('myevent', { detail: {
-              eventName: 'myeventName',
-              info: {'key1': 'val1', 'key2': 'val2'}
-          }}));
-      }
-      document.addEventListener('myevent', loggingjs.logEvent, true);
-
-      function sendCustomEvent2() {
-          console.log('sendCustomEvent2');
-          loggingjs.logEvent(null, 'myevent2', {
-              eventName: 'myeventName',
-              info: {'key1': 'val1', 'key2': 'val2'}
-          });
-      }
-    </script>
+      <a href="tabular.html">
+        <button>
+          Back
+        </button>
+      </a>
+    <!-- <script src="script.js"></script> -->
+    <!-- <script>
+      document.addEventListener("mousedown", function(){
+        var clicks = parseInt(localStorage.getItem('clicks'))
+        clicks += 1
+        localStorage.setItem('clicks', clicks)
+      })
+    </script> -->
   </body>
 </html>
