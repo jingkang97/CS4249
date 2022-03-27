@@ -39,30 +39,31 @@
       </div>
 </html>
 
-<!-- <script>
-    // get from sessionstorage as object
-    var confirmedSessions = JSON.parse(sessionStorage.getItem('selectedSessions'));
+<script>
+    // // get from sessionstorage as object
+    // var confirmedSessions = JSON.parse(sessionStorage.getItem('selectedSessions'));
 
-    const cost = sessionStorage.getItem('totalCost');
+    // const cost = sessionStorage.getItem('totalCost');
 
-    let allConfirmedSlotsHtml = '';
-    for (const value of Object.values(confirmedSessions)) {
-        allConfirmedSlotsHtml += `
-        <div>
-            <p>${value.date}, ${value.slot}, Session ${value.session} </p>
-        </div>
-        `
-    }
-    document.getElementById('confirmed-slots').innerHTML = allConfirmedSlotsHtml;
+    // let allConfirmedSlotsHtml = '';
+    // for (const value of Object.values(confirmedSessions)) {
+    //     allConfirmedSlotsHtml += `
+    //     <div>
+    //         <p>${value.date}, ${value.slot}, Session ${value.session} </p>
+    //     </div>
+    //     `
+    // }
+    // document.getElementById('confirmed-slots').innerHTML = allConfirmedSlotsHtml;
 
-    let messageHTML = `<p>Your booking has been confirmed for the following slot`;
-    if (Object.values(confirmedSessions).length > 1) {
-        messageHTML += `s`;
-    }
-    messageHTML += `:</p>`
-    document.getElementById("message").innerHTML = messageHTML;
+    // let messageHTML = `<p>Your booking has been confirmed for the following slot`;
+    // if (Object.values(confirmedSessions).length > 1) {
+    //     messageHTML += `s`;
+    // }
+    // messageHTML += `:</p>`
+    // document.getElementById("message").innerHTML = messageHTML;
 
-    document.querySelector('.total-cost').innerHTML = `Total cost: $` + cost;
+    // document.querySelector('.total-cost').innerHTML = `Total cost: $` + cost;
 
+    // enable qualtrics next button
     parent.postMessage("End of Survey", "*");
-</script> -->
+</script>
