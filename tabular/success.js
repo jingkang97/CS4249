@@ -1,4 +1,8 @@
-var uid = getUniqueId()
+var uid = localStorage.getItem('uid')
+if (uid === null) {
+  uid = getUniqueId()
+  localStorage.setItem('uid', uid.toString())
+}
 var startTime = new Date(localStorage.getItem("start_time")).getTime();
 var endTime = new Date().getTime();
 var taskid = localStorage.getItem("task_id")
