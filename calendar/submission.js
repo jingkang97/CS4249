@@ -407,7 +407,7 @@ function sendLoggedDataAndRedirect() {
 
 function sendNetworkLog(uid, technique, taskId, totalTime, numClicks, numTries, mturk) {
     console.log("SENDING NETWORK LOG", "uid", uid, "technique", technique, "taskId", taskId, 
-        "time", totalTime, "clicks", numClicks, "tries", numTries);
+        "time", totalTime, "clicks", numClicks, "tries", numTries, "mturk", mturk);
     var formid = "1FAIpQLSf-H0XExwzcCAFtxS1yQi_6q1yzBt2qsmitQUrAiep_oGNphA";
     var data = {
         "entry.291160548": mturk,

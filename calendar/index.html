@@ -14,13 +14,13 @@
 	</div>
     <script>
 		function GetURLParameter(sParam){
-		    var sPageURL = window.location.search.substring(1);
-            console.log(sPageURL);
+            let url = window.location.search.substring(1);
             let qArray = url.split('&'); //get key-value pairs
             for (var i = 0; i < qArray.length; i++) 
             {
                 var pArr = qArray[i].split('='); //split key and value
                 if (pArr[0] == sParam) { // get the param 'id' value
+                    console.log(sParam, pArr[1]);
                     return pArr[1];
                 }
             }
